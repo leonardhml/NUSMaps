@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">NUSMaps</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="loading_screen_title">NUSMaps</string>
+    <string name="loading_screen_subtitle">By LeoFX</string>
+    <string name="title_activity_main_screen">NUSMaps</string>
+    
+    <string-array name="navigation_items">
+        <item name="directory">Directory</item>
+        <item name="search">Search</item>
+        <item name="routes">Bus Routes</item>
+        <item name="login">Login</item>
+    </string-array>
+    <string name="title_activity_directory_screen">DirectoryScreen</string>
+
+</resources>
