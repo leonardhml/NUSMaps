@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config1 {
+            keyAlias 'NUSMapOrbitalKey'
+            keyPassword 'HfXHmL2015'
+            storeFile file('/Users/HFX/keystores/android.jks')
+            storePassword 'HfXHmL2015'
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-
     defaultConfig {
         applicationId "leofx.nusmaps"
         minSdkVersion 17
@@ -15,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config1
         }
     }
 }
@@ -29,7 +37,6 @@ android {
 dependencies {
     // Google Play Services
     compile 'com.google.android.gms:play-services:7.5.0'
-
     // Support Libraries
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:cardview-v7:22.2.0'
@@ -41,7 +48,6 @@ dependencies {
     compile 'com.android.support:support-annotations:22.2.0'
     compile 'com.android.support:support-v13:22.2.0'
     compile 'com.android.support:support-v4:22.2.0'
-
     // Note: these libraries require the "Google Repository" and "Android Repository"
     //       to be installed via the SDK manager.
 }
