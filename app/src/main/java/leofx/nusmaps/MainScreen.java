@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.util.Log;
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
@@ -19,6 +24,7 @@ public class MainScreen extends ActionBarActivity {
     private String[] navigationItems;
     private DrawerLayout mDrawerlayout;
     private ListView mDrawerList;
+    GoogleMap googleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,9 @@ public class MainScreen extends ActionBarActivity {
                 startActivity(i);
             }
         });
+
+        createMapView();
+        addMarker();
     }
 
     @Override
@@ -67,4 +76,50 @@ public class MainScreen extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Initialises the mapview
+     */
+    private void createMapView(){
+        /**
+         * Catch the null pointer exception that
+         * may be thrown when initialising the map
+         */
+        try {
+            if(null == googleMap){
+                googleMap = ((MapFragment) getFragmentManager().findFragmentById(
+                        R.id.mapView)).getMap();
+
+                /**
+                 * If the map is still null after attempted initialisation,
+                 * show an error to the user
+                 */
+                if(null == googleMap) {
+                    Toast.makeText(getApplicationContext(),
+                            "Error creating map",Toast.LENGTH_SHORT).show();
+                }
+            }
+        } catch (NullPointerException exception){
+            Log.e("mapApp", exception.toString());
+        }
+    }
+
+    /**
+     * Adds a marker to the map
+     */
+    private void addMarker(){
+
+        /** Make sure that the map has been initialised **/
+        if(null != googleMap){
+            googleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(0, 0))
+                            .title("Marker")
+                            .draggable(true)
+            );
+        }
+    }
+
+
+
+
 }
