@@ -13,6 +13,17 @@
         <item name="routes">Bus Routes</item>
         <item name="login">Login</item>
     </string-array>
+
+    <string-array name="bus_routes">
+        <item name="a1">A1</item>
+        <item name="a2">A2</item>
+        <item name="b">B</item>
+        <item name="c">C</item>
+        <item name="d1">D1</item>
+        <item name="d2">D2</item>
+    </string-array>
+
     <string name="title_activity_directory_screen">DirectoryScreen</string>
+    <string name="title_activity_bus_directory_screen">BusDirectoryScreen</string>
 
 </resources>
