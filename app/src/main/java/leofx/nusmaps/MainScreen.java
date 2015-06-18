@@ -45,6 +45,9 @@ public class MainScreen extends ActionBarActivity {
                     case 0:
                         i = new Intent(MainScreen.this, DirectoryScreen.class);
                         break;
+                    case 2:
+                        i = new Intent(MainScreen.this, BusDirectoryScreen.class);
+                        break;
                 }
 
                 startActivity(i);

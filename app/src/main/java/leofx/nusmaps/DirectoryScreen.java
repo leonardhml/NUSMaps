@@ -4,7 +4,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,12 +24,22 @@ public class DirectoryScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_directory_screen);
         dirList = (ExpandableListView) findViewById(R.id.dir_list);
-        parentDir = getInfo();
+        parentDir = DirectoryDatabase.getInfo();
         keyList = new ArrayList<String>(parentDir.keySet());
         adapter = new DirectoryAdapter(this, parentDir, keyList);
         dirList.setAdapter(adapter);
 
+        dirList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                return false;
+                // start activities to mainScreen with different extra values corresponding to where on the map the
+                // marker should point to
+            }
+        });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,34 +65,5 @@ public class DirectoryScreen extends ActionBarActivity {
 
 
 
-    private static HashMap<String, List<String>> getInfo() {
-        HashMap<String, List<String>> data = new HashMap<String, List<String>>();
 
-        List<String> childList1 = new ArrayList<String>();
-        childList1.add("Science");
-        childList1.add("Medicine");
-        childList1.add("Engineering");
-        childList1.add("SoC");
-        childList1.add("FASS");
-
-        List<String> childList2 = new ArrayList<String>();
-        childList2.add("Frontier");
-        childList2.add("Deck");
-        childList2.add("Terrace");
-        childList2.add("Reeds");
-        childList2.add("Flavours");
-
-        List<String> childList3 = new ArrayList<String>();
-        childList3.add("Sci Library");
-        childList3.add("Central Library");
-        childList3.add("Medicine Library");
-        childList3.add("UTown Library");
-
-        data.put("Faculties", childList1);
-        data.put("Canteens", childList2);
-        data.put("Libraries", childList3);
-
-        return data;
-
-    }
 }
