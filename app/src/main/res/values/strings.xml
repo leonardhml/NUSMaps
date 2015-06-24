@@ -3,9 +3,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="loading_screen_title">NUSMaps</string>
+    <string name="loading_screen_title">NUSMap</string>
     <string name="loading_screen_subtitle">By LeoFX</string>
-    <string name="title_activity_main_screen">NUSMaps</string>
+    <string name="title_activity_main_screen">NUSMap</string>
     
     <string-array name="navigation_items">
         <item name="directory">Directory</item>
