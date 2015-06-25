@@ -1,5 +1,7 @@
 package leofx.nusmaps;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,14 +23,17 @@ public class BusDirectoryScreen extends ActionBarActivity {
         setContentView(R.layout.activity_bus_directory_screen);
 
         busList = (ListView) findViewById(R.id.bus_list);
-        buses = getResources().getStringArray(R.array.bus_routes);
+        buses = BusDirectoryDatabase.BUSLIST;
 
         busList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, buses));
 
         busList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(),buses[position], Toast.LENGTH_LONG).show();
+                Intent i = new Intent();
+                i.putExtra("leofx.nusmaps.position", position);
+                setResult(RESULT_OK,i);
+                finish();
             }
         });
 

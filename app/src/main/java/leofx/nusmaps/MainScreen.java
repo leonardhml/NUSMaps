@@ -2,9 +2,11 @@ package leofx.nusmaps;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -17,18 +19,23 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.util.Log;
 import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 
 import java.util.List;
 
 
-public class MainScreen extends ActionBarActivity {
+public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
 
     private String[] navigationItems;
     private DrawerLayout mDrawerlayout;
     private ListView mDrawerList;
-    GoogleMap googleMap;
+    GoogleMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +55,20 @@ public class MainScreen extends ActionBarActivity {
                 switch (position) {
                     case 0:
                         i = new Intent(MainScreen.this, DirectoryScreen.class);
+                        startActivity(i);
                         break;
                     case 2:
                         i = new Intent(MainScreen.this, BusDirectoryScreen.class);
+                        startActivityForResult(i, 2);
                         break;
                 }
 
-                startActivity(i);
             }
         });
 
+
+        MapFragment mapFrag = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapView));
+        mapFrag.getMapAsync(this);
 
 
     }
@@ -84,84 +95,36 @@ public class MainScreen extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Initialises the mapview
-     */
-    private void createMapView(){
-        /**
-         * Catch the null pointer exception that
-         * may be thrown when initialising the map
-         */
-        try {
-            if(null == googleMap){
-                googleMap = ((MapFragment) getFragmentManager().findFragmentById(
-                        R.id.mapView)).getMap();
 
-                /**
-                 * If the map is still null after attempted initialisation,
-                 * show an error to the user
-                 */
-                if(null == googleMap) {
-                    Toast.makeText(getApplicationContext(),
-                            "Error creating map",Toast.LENGTH_SHORT).show();
-                }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+
+        map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            public void onMapLoaded() {
+                map.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds(new LatLng(1.292395, 103.768174), new LatLng(1.307562, 103.785920)), 1));
             }
-        } catch (NullPointerException exception){
-            Log.e("mapApp", exception.toString());
-        }
+        });
+    //    LatLngBounds overlayBound = new LatLngBounds(new LatLng(1.291581, 103.766413), new LatLng(1.309472, 103.788708));
+    //    GroundOverlayOptions nusOverlayOptions = new GroundOverlayOptions()
+    //            .image(BitmapDescriptorFactory.fromResource(R.drawable.icon3))
+    //            .positionFromBounds(overlayBound);
+
+    //    map.addGroundOverlay(nusOverlayOptions);
+
+
     }
 
-    /**
-     * Adds a marker to the map
-     */
-    private void addMarker(){
-
-        /** Make sure that the map has been initialised **/
-        if(null != googleMap){
-            googleMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(0, 0))
-                            .title("Marker")
-                            .draggable(true)
-            );
+    @Override
+    public void onActivityResult(int reqCode, int resCode, Intent data) {
+        if (reqCode == 2) {
+            if (resCode == RESULT_OK) {
+                mDrawerlayout.closeDrawers();
+                map.clear();
+                int position = data.getIntExtra("leofx.nusmaps.position", 0);
+                Polyline line = map.addPolyline(BusDirectoryDatabase.getLatLngList().get(position).color(BusDirectoryDatabase.COLORS[position]));
+            }
         }
-    }
-
-
-    private void setUpMap() {
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker").snippet("Snippet"));
-
-        // Enable MyLocation Layer of Google Map
-        googleMap.setMyLocationEnabled(true);
-
-        // Get LocationManager object from System Service LOCATION_SERVICE
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        // Create a criteria object to retrieve provider
-        Criteria criteria = new Criteria();
-
-        // Get the name of the best provider
-        String provider = locationManager.getBestProvider(criteria, true);
-
-        // Get Current Location
-        Location myLocation = locationManager.getLastKnownLocation(provider);
-
-        // set map type
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-        // Get latitude of the current location
-        double latitude = myLocation.getLatitude();
-
-        // Get longitude of the current location
-        double longitude = myLocation.getLongitude();
-
-        // Create a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
-
-        // Show the current location in Google Map
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-        // Zoom in the Google Map
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here!").snippet("Consider yourself located"));
     }
 }
