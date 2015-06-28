@@ -7,11 +7,13 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public class PlaceOfInterestInfo {
 
-    private LatLng m_coordinates;
-    private String m_LocationName;
-    private String m_info;
+    public String name;
+    public LatLng coordinates;
+    public String info;
 
-    public PlaceOfInterestInfo() {
-
+    public PlaceOfInterestInfo(String name, LatLng coordinates, String info) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.info = info;
     }
 }
