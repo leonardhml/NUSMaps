@@ -4,6 +4,7 @@ package leofx.nusmaps;
 import java.util.HashMap;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
@@ -59,7 +60,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
     PolylineOptions mPolylineOptions;
     private boolean checkClick = false;
 
-    private Map<String, PlaceOfInterestInfo> area1POIs;
+    protected static List<Map<String, PlaceOfInterestInfo>> POIListByArea;
 
 
     @Override
@@ -98,7 +99,25 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
 
         //added!!!_fx
         mLocationPoints = new ArrayList<LatLng>();
-        area1POIs = MarkersDatabase.Area1.getArea1POIs();
+
+        // Initialise all the PoIs in all areas, arranged by area; e.g. if you want to retrieve a PoI from area 5, use POIListByArea.get(5).get("POI name")
+        POIListByArea = new ArrayList<Map<String, PlaceOfInterestInfo>>();
+        POIListByArea.add(null);    //We don't have an area 0; so calling POIListByArea.get() we can just refer directly to the area we want
+        POIListByArea.add(MarkersDatabase.Area1.getArea1POIs());
+        POIListByArea.add(MarkersDatabase.Area2.getArea2POIs());
+        POIListByArea.add(MarkersDatabase.Area3.getArea3POIs());
+        POIListByArea.add(MarkersDatabase.Area4.getArea4POIs());
+        POIListByArea.add(MarkersDatabase.Area5.getArea5POIs());
+        POIListByArea.add(MarkersDatabase.Area6.getArea6POIs());
+        POIListByArea.add(MarkersDatabase.Area7.getArea7POIs());
+        POIListByArea.add(MarkersDatabase.Area8.getArea8POIs());
+        POIListByArea.add(MarkersDatabase.Area9.getArea9POIs());
+        POIListByArea.add(MarkersDatabase.Area10.getArea10POIs());
+        POIListByArea.add(MarkersDatabase.Area11.getArea11POIs());
+        POIListByArea.add(MarkersDatabase.Area12.getArea12POIs());
+        POIListByArea.add(MarkersDatabase.Area13.getArea13POIs());
+        POIListByArea.add(MarkersDatabase.Area14.getArea14POIs());
+        POIListByArea.add(MarkersDatabase.Area15.getArea15POIs());
 
     }
 
