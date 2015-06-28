@@ -52,6 +52,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(MainScreen.this, DirectoryScreen.class);
                 switch (position) {
                     case 0:
                         i = new Intent(MainScreen.this, DirectoryScreen.class);
