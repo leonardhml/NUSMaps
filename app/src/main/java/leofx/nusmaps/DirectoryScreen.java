@@ -15,8 +15,7 @@ import java.util.List;
 
 public class DirectoryScreen extends ActionBarActivity {
 
-    HashMap<String, List<String>> parentDir;
-    List<String> keyList;
+    List<Pair> parentDir;
     DirectoryAdapter adapter;
     ExpandableListView dirList;
     @Override
@@ -25,8 +24,7 @@ public class DirectoryScreen extends ActionBarActivity {
         setContentView(R.layout.activity_directory_screen);
         dirList = (ExpandableListView) findViewById(R.id.dir_list);
         parentDir = DirectoryDatabase.getInfo();
-        keyList = new ArrayList<String>(parentDir.keySet());
-        adapter = new DirectoryAdapter(this, parentDir, keyList);
+        adapter = new DirectoryAdapter(this, parentDir);
         dirList.setAdapter(adapter);
 
         dirList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {

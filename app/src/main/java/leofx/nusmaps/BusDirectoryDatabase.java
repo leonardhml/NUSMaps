@@ -2,6 +2,7 @@ package leofx.nusmaps;
 
 import android.app.Activity;
 
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
@@ -15,6 +16,8 @@ public class BusDirectoryDatabase {
 
     public static final String[] BUSLIST = {"A1", "A2", "B", "C", "D1", "D2", "A1E", "A2E(AM)", "A2E(PM)", "UT-CLB Direct", "UT-FoS Direct"};
     public static final int[] COLORS = {0xFF5D8AA8, 0xFFAF002A, 0xFF9966CC, 0xFFFF033E, 0xFF00FFFF, 0xFFB2BEB5, 0xFFFF91AF, 0xFF967117, 0xFF0000FF, 0xFFDE6FA1, 0xFFDC143C};
+
+
     static final List<LatLng> a1LatLng = PolyUtil.decode("ek{FaqlxR\\YhAOrAq@XoAM_Bu@{BeBqEdA{@qBqCyCiBo@{@e@As@JeBNuBhA_CrAkCpAo@^q@t@c@v@?NMJOl@GnAkAbBQb@IhADnA@z@PlBX`AHvAo@rC_A|CkAnBwAjAg@j@Oh@Iv@?x@Dt@[`Ao@rAKXpBfAtAhBr@jA`@Z`AZv@RnA|@^V~@xAJjCCz@xB\\hAd@r@HpABfAQjAo@p@s@`@oAJuBiAIm@g@k@u@s@[}@a@[a@Bk@t@{@`@[r@h@cA~@Hd@If@~@f@b@r@l@b@hAJJC\\gBhAkBn@s@lA{@Lu@MqAgBuAcAYsAUi@[I]@eBCqCzBcEd@qBNcBLw@xAyBh@uA");
     static final List<LatLng> a2LatLng = PolyUtil.decode("yi{FycmxR`AvBbA|CX`AF|AOv@k@l@kBZk@^YbAeA|Aq@tAQzAYtBi@jAw@vAg@v@BfF@n@RNn@PhATxAv@lA`ABdAOx@qA`A{ArBq@xBIb@aAKa@Q}@oAkBs@]m@@e@T]~@}@T?d@f@aA|@INPXOh@dAb@v@hAZRz@Fx@J`@{BRMTHBPYlBWvAYtAkAjB{@p@QJ_ATg@No@@a@EQIQOMUGUo@Uw@YiAUi@CMC@iBQ{Ac@u@u@q@uAaAGScBg@w@aAeAeBqC{Am@B_@O_AEkA\\g@\\CZUJk@bA]|@Cf@[ARaATcA`@o@Jc@ZGh@e@`AStAIb@KV?j@Yp@{A@{B@o@\\}@z@s@??fAiAt@mAh@eBh@_Bh@wBKmB[kAOgBEoABeBVy@l@{@^oDDSd@o@~@}@lAs@bAm@nAo@pDyB\\Oh@C|@Gl@OPOVQb@n@l@x@\\Hb@Zb@TvAvAbAlADRyAfA");
     static final List<LatLng> bLatLng = PolyUtil.decode("_`}FiqjxRaEwAx@cEd@{BDmAO}B@kAl@eBXe@?[LMR?f@c@d@Q|@Ix@C^MV?LNFZrBbAl@r@pAlB^h@f@NxAb@rA|@pA|ATzAE`Cv@BrAZjAd@fAJzAIfA_@t@y@n@kAPiBBc@aAIg@W_@i@U]YSk@So@SQOG[Da@X_@r@o@HAj@\\ITu@n@CNNVSn@p@Rb@b@b@n@b@VZFh@Dp@?b@_CRGPHBL[jBk@fDEPOZy@hAcAr@mBl@eA?k@SOUM_@sAe@{AYy@GAuCSiAaAgAsA_A]Y_AYc@O[a@k@u@{@wA_Bu@{@c@]DYOiAEgA^c@VA\\WFcAxBInAFjCErAi@jCc@rBPb@NRnBj@`@H");
@@ -36,5 +39,30 @@ public class BusDirectoryDatabase {
         LATLNGLIST.add(new PolylineOptions().addAll(utfosLatLng));
 
         return LATLNGLIST;
+    }
+
+    public static List<List<PlaceOfInterestInfo>> getBusMarkersList() {
+        List<List<PlaceOfInterestInfo>> busMarkersList = new ArrayList<List<PlaceOfInterestInfo>>();
+        //A1
+        List<PlaceOfInterestInfo> a1BusStops = new ArrayList<PlaceOfInterestInfo>();
+        a1BusStops.add(MainScreen.POIListByArea.get(9).get("Busstop: PGP Terminal"));
+        a1BusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: After Sci Park Drive/ Kent Ridge Stn"));
+        a1BusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Kent Ridge MRT Station"));
+        a1BusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: NUH"));
+        a1BusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: LT29"));
+        a1BusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: University Hall"));
+        a1BusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Opp UHC"));
+        a1BusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Yusof Ishak House"));
+        a1BusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Central Library"));
+        a1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: LT13"));
+        a1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: AS7"));
+        a1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: COM2"));
+        a1BusStops.add(MainScreen.POIListByArea.get(7).get("Busstop: BIZ2"));
+        a1BusStops.add(MainScreen.POIListByArea.get(8).get("Busstop: Opp House 12"));
+        a1BusStops.add(MainScreen.POIListByArea.get(8).get("Busstop: House 7"));
+
+        busMarkersList.add(a1BusStops);
+
+        return busMarkersList;
     }
 }

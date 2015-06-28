@@ -16,32 +16,30 @@ import java.util.List;
  */
 public class DirectoryAdapter extends BaseExpandableListAdapter {
     private Context ctx;
-    private HashMap<String, List<String>> parentDir;
-    private List<String> keyList;
+    private List<Pair> parentDir;
 
-    public DirectoryAdapter(Context c, HashMap<String, List<String>> parentDir, List<String> keyList) {
+    public DirectoryAdapter(Context c, List<Pair> parentDir) {
         ctx = c;
         this.parentDir = parentDir;
-        this.keyList = keyList;
     }
     @Override
     public int getGroupCount() {
-        return keyList.size();
+        return parentDir.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return parentDir.get(keyList.get(groupPosition)).size();
+        return parentDir.get(groupPosition).childList.size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return keyList.get(groupPosition);
+        return parentDir.get(groupPosition).groupName;
     }
 
     @Override
     public Object getChild(int parentPosition, int childPosition) {
-        return parentDir.get(keyList.get(parentPosition)).get(childPosition);
+        return parentDir.get(parentPosition).childList.get(childPosition);
     }
 
     @Override
