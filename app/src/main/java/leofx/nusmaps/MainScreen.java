@@ -99,9 +99,14 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
 
         //added!!!_fx
         mLocationPoints = new ArrayList<LatLng>();
+        POIListByArea = initialisePOIList();
 
+
+    }
+
+    private List<Map<String, PlaceOfInterestInfo>> initialisePOIList() {
         // Initialise all the PoIs in all areas, arranged by area; e.g. if you want to retrieve a PoI from area 5, use POIListByArea.get(5).get("POI name")
-        POIListByArea = new ArrayList<Map<String, PlaceOfInterestInfo>>();
+        List<Map<String, PlaceOfInterestInfo>> POIListByArea = new ArrayList<Map<String, PlaceOfInterestInfo>>();
         POIListByArea.add(null);    //We don't have an area 0; so calling POIListByArea.get() we can just refer directly to the area we want
         POIListByArea.add(MarkersDatabase.Area1.getArea1POIs());
         POIListByArea.add(MarkersDatabase.Area2.getArea2POIs());
@@ -118,7 +123,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
         POIListByArea.add(MarkersDatabase.Area13.getArea13POIs());
         POIListByArea.add(MarkersDatabase.Area14.getArea14POIs());
         POIListByArea.add(MarkersDatabase.Area15.getArea15POIs());
-
+        return POIListByArea;
     }
 
 
