@@ -21,6 +21,7 @@ import android.util.Log;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -51,7 +52,6 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(MainScreen.this, DirectoryScreen.class);
                 switch (position) {
                     case 0:
                         i = new Intent(MainScreen.this, DirectoryScreen.class);
@@ -104,6 +104,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
             @Override
             public void onMapLoaded() {
                 map.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds(new LatLng(1.292395, 103.768174), new LatLng(1.307562, 103.785920)), 1));
+                map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(map.getCameraPosition().target, map.getCameraPosition().zoom, map.getCameraPosition().tilt, 30)));
             }
         });
     //    LatLngBounds overlayBound = new LatLngBounds(new LatLng(1.291581, 103.766413), new LatLng(1.309472, 103.788708));

@@ -21,6 +21,8 @@ public class BusDirectoryDatabase {
     static final List<LatLng> cLatLng = PolyUtil.decode("c`}FoqjxRaEoAdB_IBmAQmBHaB`@yALUT[@YJKT?j@i@jAWdAA\\MZ@d@]f@}@Tw@GkBH}@\\q@n@g@z@u@j@o@r@}AXgAf@oB`@yA?e@I{@U_AUeB?eAEgA@{@\\cAb@o@Ru@J{ABm@POPDBVSd@Kl@An@Yb@i@z@Wn@GfA@v@BnAPhBX`AHlAGn@YfAW~@U~@[bAc@bAy@dAw@p@o@l@U`@Kd@?f@@r@CjAO^]r@e@t@Q^g@@UMw@IoA`@g@XA^]Fm@xASt@EpAHz@D`BKhAu@pCYhAZl@f@VfBh@");
     static final List<LatLng> d1LatLng = PolyUtil.decode("}r{FwqkxRjATTHxA~@h@d@D~@Q|@_Ar@YVo@z@_A|AW|AADm@A_@KQOWYc@o@UQg@Om@QUWGUDa@x@}@XUh@b@eAz@ANLTIl@r@TNJj@z@^\\TJJBt@BDHI~AUjAq@`AaAl@kAVu@Ds@Ag@Ke@Mq@YiB[[GBsASqBo@{@u@y@y@g@]WmA_@a@SgAeBk@{@wBkAc@Mi@BUUsA@yAp@@REPYHy@|AIdA_@?Z{A\\cAVWESi@i@w@EuAf@uBt@a@Fy@Dm@K[Oc@c@QWa@mAGgBEi@UAMQAMPINELVEPHd@DjAFp@L^Rb@j@l@VP^Hx@@RC~@WfCcAbAIXJVJZLTCh@a@dAUxAK^G`@LDXbBdA\\Jp@~@n@~@^n@PNp@VpA^dBtAv@bAVjBGdB@FvB\\`A^x@Lh@@j@?|@ObA]d@g@f@y@Ns@JsAAWc@?a@GUOYYQWYc@g@UaAY[[ESFs@h@g@t@g@n@b@AP}@p@GLPP@HSl@r@Vl@t@^b@XRh@DV@NGFq@`@iAz@qAn@{@lAu@J}@CmAyAkAo@a@e@Oe@G");
     static final List<LatLng> d2LatLng = PolyUtil.decode("sk{FmplxRJ]d@YdAKj@Qf@e@Py@KsAUgA_BuEk@mAlAu@u@eAiAwAaBiAk@Sc@s@i@EcANmADq@PsAx@oBpA}BfAmAp@qA`B@ZMHQn@EjAm@z@g@|@Mp@@fBBhARtBXlAFfA]zAc@fBm@fB[t@iA|AaAr@WVWd@Mp@BxA?j@W|@y@|AWd@]@[Q{@CgAXo@d@AVKHOAe@jAYt@Cj@UCB{@ZkAb@o@C[o@e@w@?sCbAu@Zc@Hc@Ac@C]K}@s@i@wAIg@AoAG_@YIKUHKXCNLCXFvBJd@`@hAn@p@^RfADf@InBq@`Bk@t@?n@XTFX?b@c@nA]jAAn@Kn@Up@yADy@CiAJeAd@{@h@e@bBaB`@}@l@aBb@oBb@mBKiAU}@UsBAeAEqBPw@|@yANc@@y@LoAd@y@vAsAbBy@`B}@dDsBt@]fAEj@C`Ae@TCh@fAp@d@tA|@r@l@xA~AN`@yAbAf@hAbBrEPhAJxAGh@a@f@g@ZuAPc@ROX");
+    static final List<LatLng> utclbLatLng = PolyUtil.decode("gq}FwlkxRa@kAIe@EgBEKUAMKBSHKZDBRCPFHFbBFn@`@fAt@t@dAVfAKbBo@lBo@r@@l@VRJX@x@o@x@OpAG^IT@JN?P`@TvAv@h@p@jA~A\\h@VNbBf@RP|@l@|@p@h@`AP|AA`B??MLCs@CeBOaAiAkAsAaASQ}Aa@]WsAwB[e@cB}@o@]a@DSEOMg@Cu@Fs@Z[XATQNWCKOCYa@[SKu@B{@\\oAb@cA\\cAF}@Q_Ay@");
+    static final List<LatLng> utfosLatLng = PolyUtil.decode("iq}F{lkxRa@gAGe@EiBCIUAKICOLMPALH?LANBJF|AFl@`@jA`@d@^Xj@Lj@@n@Ir@[rAc@x@]f@C\\DJHl@NX@d@[l@UvBMRKT?NCb@YZo@La@F[?a@EcA?YF[Pk@R]l@g@bAcAh@o@`@aAr@aCz@}CMyAW_AUmB@y@E_@?o@?q@F_@HWf@w@LQRm@NmB?]JKJAFBBJARKFOj@A`AUb@g@r@Yf@Ol@?n@@r@D^?t@RlBV~@JzA{@hDo@~Be@fAk@v@w@p@w@p@U`@K\\Gf@B`ABl@Id@Yn@U\\[h@M`@ULYEUMk@Eq@Fk@Tg@X@PGPUFQKCMGMm@g@MCa@@}@VuAh@_A\\o@Fm@?o@Qi@g@SQ");
 
     public static List<PolylineOptions> getLatLngList() {
         List<PolylineOptions> LATLNGLIST = new ArrayList<PolylineOptions>();
@@ -30,6 +32,8 @@ public class BusDirectoryDatabase {
         LATLNGLIST.add(new PolylineOptions().addAll(cLatLng));
         LATLNGLIST.add(new PolylineOptions().addAll(d1LatLng));
         LATLNGLIST.add(new PolylineOptions().addAll(d2LatLng));
+        LATLNGLIST.add(new PolylineOptions().addAll(utclbLatLng));
+        LATLNGLIST.add(new PolylineOptions().addAll(utfosLatLng));
 
         return LATLNGLIST;
     }
