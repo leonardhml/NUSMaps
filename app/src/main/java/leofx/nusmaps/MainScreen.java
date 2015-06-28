@@ -4,6 +4,7 @@ package leofx.nusmaps;
 import java.util.HashMap;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Map;
 
 import android.content.Context;
 import android.content.Intent;
@@ -58,6 +59,8 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
     PolylineOptions mPolylineOptions;
     private boolean checkClick = false;
 
+    private Map<String, PlaceOfInterestInfo> area1POIs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +98,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
 
         //added!!!_fx
         mLocationPoints = new ArrayList<LatLng>();
+        area1POIs = MarkersDatabase.Area1.getArea1POIs();
 
     }
 
