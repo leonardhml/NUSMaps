@@ -3,42 +3,243 @@ package leofx.nusmaps;
 import android.graphics.Color;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.maps.android.PolyUtil;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by HFX on 28/6/15.
  */
 public class PolygonCoordinatesDatabase {
 
-    public static final String[] AREALIST = {"A1", "A2", "B", "C", "D1", "D2", "A1E", "A2E(AM)", "A2E(PM)", "UT-CLB Direct", "UT-FoS Direct"};
-    public static final int[] COLORS = {0xFF5D8AA8, 0xFFAF002A, 0xFF9966CC, 0xFFFF033E, 0xFF00FFFF, 0xFFB2BEB5, 0xFFFF91AF, 0xFF967117, 0xFF0000FF, 0xFFDE6FA1, 0xFFDC143C};
-    static final List<LatLng> a1LatLng = PolyUtil.decode("ek{FaqlxR\\YhAOrAq@XoAM_Bu@{BeBqEdA{@qBqCyCiBo@{@e@As@JeBNuBhA_CrAkCpAo@^q@t@c@v@?NMJOl@GnAkAbBQb@IhADnA@z@PlBX`AHvAo@rC_A|CkAnBwAjAg@j@Oh@Iv@?x@Dt@[`Ao@rAKXpBfAtAhBr@jA`@Z`AZv@RnA|@^V~@xAJjCCz@xB\\hAd@r@HpABfAQjAo@p@s@`@oAJuBiAIm@g@k@u@s@[}@a@[a@Bk@t@{@`@[r@h@cA~@Hd@If@~@f@b@r@l@b@hAJJC\\gBhAkBn@s@lA{@Lu@MqAgBuAcAYsAUi@[I]@eBCqCzBcEd@qBNcBLw@xAyBh@uA");
-    static final List<LatLng> a2LatLng = PolyUtil.decode("yi{FycmxR`AvBbA|CX`AF|AOv@k@l@kBZk@^YbAeA|Aq@tAQzAYtBi@jAw@vAg@v@BfF@n@RNn@PhATxAv@lA`ABdAOx@qA`A{ArBq@xBIb@aAKa@Q}@oAkBs@]m@@e@T]~@}@T?d@f@aA|@INPXOh@dAb@v@hAZRz@Fx@J`@{BRMTHBPYlBWvAYtAkAjB{@p@QJ_ATg@No@@a@EQIQOMUGUo@Uw@YiAUi@CMC@iBQ{Ac@u@u@q@uAaAGScBg@w@aAeAeBqC{Am@B_@O_AEkA\\g@\\CZUJk@bA]|@Cf@[ARaATcA`@o@Jc@ZGh@e@`AStAIb@KV?j@Yp@{A@{B@o@\\}@z@s@??fAiAt@mAh@eBh@_Bh@wBKmB[kAOgBEoABeBVy@l@{@^oDDSd@o@~@}@lAs@bAm@nAo@pDyB\\Oh@C|@Gl@OPOVQb@n@l@x@\\Hb@Zb@TvAvAbAlADRyAfA");
-    static final List<LatLng> bLatLng = PolyUtil.decode("_`}FiqjxRaEwAx@cEd@{BDmAO}B@kAl@eBXe@?[LMR?f@c@d@Q|@Ix@C^MV?LNFZrBbAl@r@pAlB^h@f@NxAb@rA|@pA|ATzAE`Cv@BrAZjAd@fAJzAIfA_@t@y@n@kAPiBBc@aAIg@W_@i@U]YSk@So@SQOG[Da@X_@r@o@HAj@\\ITu@n@CNNVSn@p@Rb@b@b@n@b@VZFh@Dp@?b@_CRGPHBL[jBk@fDEPOZy@hAcAr@mBl@eA?k@SOUM_@sAe@{AYy@GAuCSiAaAgAsA_A]Y_AYc@O[a@k@u@{@wA_Bu@{@c@]DYOiAEgA^c@VA\\WFcAxBInAFjCErAi@jCc@rBPb@NRnBj@`@H");
-    static final List<LatLng> cLatLng = PolyUtil.decode("c`}FoqjxRaEoAdB_IBmAQmBHaB`@yALUT[@YJKT?j@i@jAWdAA\\MZ@d@]f@}@Tw@GkBH}@\\q@n@g@z@u@j@o@r@}AXgAf@oB`@yA?e@I{@U_AUeB?eAEgA@{@\\cAb@o@Ru@J{ABm@POPDBVSd@Kl@An@Yb@i@z@Wn@GfA@v@BnAPhBX`AHlAGn@YfAW~@U~@[bAc@bAy@dAw@p@o@l@U`@Kd@?f@@r@CjAO^]r@e@t@Q^g@@UMw@IoA`@g@XA^]Fm@xASt@EpAHz@D`BKhAu@pCYhAZl@f@VfBh@");
-    static final List<LatLng> d1LatLng = PolyUtil.decode("}r{FwqkxRjATTHxA~@h@d@D~@Q|@_Ar@YVo@z@_A|AW|AADm@A_@KQOWYc@o@UQg@Om@QUWGUDa@x@}@XUh@b@eAz@ANLTIl@r@TNJj@z@^\\TJJBt@BDHI~AUjAq@`AaAl@kAVu@Ds@Ag@Ke@Mq@YiB[[GBsASqBo@{@u@y@y@g@]WmA_@a@SgAeBk@{@wBkAc@Mi@BUUsA@yAp@@REPYHy@|AIdA_@?Z{A\\cAVWESi@i@w@EuAf@uBt@a@Fy@Dm@K[Oc@c@QWa@mAGgBEi@UAMQAMPINELVEPHd@DjAFp@L^Rb@j@l@VP^Hx@@RC~@WfCcAbAIXJVJZLTCh@a@dAUxAK^G`@LDXbBdA\\Jp@~@n@~@^n@PNp@VpA^dBtAv@bAVjBGdB@FvB\\`A^x@Lh@@j@?|@ObA]d@g@f@y@Ns@JsAAWc@?a@GUOYYQWYc@g@UaAY[[ESFs@h@g@t@g@n@b@AP}@p@GLPP@HSl@r@Vl@t@^b@XRh@DV@NGFq@`@iAz@qAn@{@lAu@J}@CmAyAkAo@a@e@Oe@G");
-    static final List<LatLng> d2LatLng = PolyUtil.decode("sk{FmplxRJ]d@YdAKj@Qf@e@Py@KsAUgA_BuEk@mAlAu@u@eAiAwAaBiAk@Sc@s@i@EcANmADq@PsAx@oBpA}BfAmAp@qA`B@ZMHQn@EjAm@z@g@|@Mp@@fBBhARtBXlAFfA]zAc@fBm@fB[t@iA|AaAr@WVWd@Mp@BxA?j@W|@y@|AWd@]@[Q{@CgAXo@d@AVKHOAe@jAYt@Cj@UCB{@ZkAb@o@C[o@e@w@?sCbAu@Zc@Hc@Ac@C]K}@s@i@wAIg@AoAG_@YIKUHKXCNLCXFvBJd@`@hAn@p@^RfADf@InBq@`Bk@t@?n@XTFX?b@c@nA]jAAn@Kn@Up@yADy@CiAJeAd@{@h@e@bBaB`@}@l@aBb@oBb@mBKiAU}@UsBAeAEqBPw@|@yANc@@y@LoAd@y@vAsAbBy@`B}@dDsBt@]fAEj@C`Ae@TCh@fAp@d@tA|@r@l@xA~AN`@yAbAf@hAbBrEPhAJxAGh@a@f@g@ZuAPc@ROX");
+    public static class Area1 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng(1.29893619, 103.78017604),new LatLng(1.29748817, 103.78268659), new LatLng(1.29715566, 103.7825042),
+                        new LatLng(1.29702695, 103.78237545), new LatLng(1.29698404, 103.78223598), new LatLng(1.29591143, 103.78217161),
+                        new LatLng(1.29582562, 103.78217161), new LatLng(1.29552529, 103.78208578), new LatLng(1.2951177, 103.78208578),
+                        new LatLng(1.29505335, 103.78208578), new LatLng(1.29498899, 103.78201067), new LatLng(1.29481737, 103.78171027),
+                        new LatLng(1.29473156, 103.78164589), new LatLng(1.2946243, 103.78160298), new LatLng(1.29397001, 103.78133476),
+                        new LatLng(1.29379839, 103.78106654), new LatLng(1.29376621, 103.78080904), new LatLng(1.29410945, 103.78040135),
+                        new LatLng(1.2945814, 103.77999365), new LatLng(1.29472084, 103.77980053), new LatLng(1.29476374, 103.77961814),
+                        new LatLng(1.29481737, 103.77904952), new LatLng(1.294871, 103.77878129), new LatLng(1.29478519, 103.77818048),
+                        new LatLng(1.2948281, 103.77807319), new LatLng(1.29493536, 103.77783716), new LatLng(1.2950748, 103.77769768),
+                        new LatLng(1.29524641, 103.77751529), new LatLng(1.29530005, 103.77738655), new LatLng(1.29524641, 103.77675354),
+                        new LatLng(1.29527859, 103.77657115), new LatLng(1.29685533, 103.77744019), new LatLng(1.29652282, 103.77800882),
+                        new LatLng(1.29647992, 103.77810538), new LatLng(1.29645846, 103.77823412), new LatLng(1.29653355, 103.77834141),
+                        new LatLng(1.29671589, 103.77831995), new LatLng(1.29693041, 103.77831995), new LatLng(1.29716638, 103.77831995),
+                        new LatLng(1.29742381,103.77838433), new LatLng(1.29742381, 103.77839506), new LatLng(1.29715566, 103.7791568),
+                        new LatLng(1.29716638, 103.77927482), new LatLng(1.29740236, 103.78024042))
+                .strokeColor(Color.YELLOW)
+                .strokeWidth((float)0.5)
+                .fillColor(Color.YELLOW);
 
-    public static List<PolylineOptions> getLatLngList() {
-        List<PolylineOptions> LATLNGLIST = new ArrayList<PolylineOptions>();
-        LATLNGLIST.add(new PolylineOptions().addAll(a1LatLng));
-        LATLNGLIST.add(new PolylineOptions().addAll(a2LatLng));
-        LATLNGLIST.add(new PolylineOptions().addAll(bLatLng));
-        LATLNGLIST.add(new PolylineOptions().addAll(cLatLng));
-        LATLNGLIST.add(new PolylineOptions().addAll(d1LatLng));
-        LATLNGLIST.add(new PolylineOptions().addAll(d2LatLng));
-
-        return LATLNGLIST;
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
     }
 
-    /*Polygon polygon = map.addPolygon(new PolygonOptions()
-            .add(new LatLng(1.30104923, 103.7753119), new LatLng(1.29991494, 103.7763231), new LatLng(1.29913462, 103.7764116), new LatLng(1.30155603, 103.7736569))
-            .strokeColor(Color.RED)
-            .fillColor(Color.BLUE));*/
+   public static class Area2 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng(1.3025187, 103.77396673), new LatLng(1.29893619, 103.78017604), new LatLng(1.29740236, 103.78024042),
+                        new LatLng(1.29731655, 103.77982199), new LatLng(1.29716638, 103.77927482), new LatLng(1.29715566, 103.7791568),
+                        new LatLng(1.29742381, 103.77839506), new LatLng(1.29768124, 103.77771914), new LatLng(1.29788503, 103.77734363),
+                        new LatLng(1.29802447, 103.77713978), new LatLng(1.29829262, 103.77687156), new LatLng(1.29859295, 103.77663553),
+                        new LatLng(1.29873239, 103.77649605), new LatLng(1.2987753, 103.77642095), new LatLng(1.29885038, 103.77624929),
+                        new LatLng(1.29888256, 103.77608836), new LatLng(1.29888256, 103.7759167), new LatLng(1.29888256, 103.77560556),
+                        new LatLng(1.29888256, 103.77539098), new LatLng(1.29891474, 103.77523005), new LatLng(1.29904345, 103.77496183),
+                        new LatLng(1.29915071,103.77482235), new LatLng(1.30069527, 103.77416521), new LatLng(1.3007918, 103.7742725),
+                        new LatLng(1.30098487, 103.77440661), new LatLng(1.30106531, 103.77447098), new LatLng(1.30110822, 103.77448171),
+                        new LatLng(1.30120475, 103.77448708), new LatLng(1.30131738, 103.77448708), new LatLng(1.30143, 103.77444953),
+                        new LatLng(1.30150508 , 103.77441198), new LatLng(1.30210038, 103.77413303 ), new LatLng(1.30235781, 103.77402037))
+                .strokeColor(Color.MAGENTA)
+                .strokeWidth((float)0.5)
+                .fillColor(Color.MAGENTA);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }
+
+    public static class Area3 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng(1.3025187, 103.77396673), new LatLng(1.30235781, 103.77402037), new LatLng(1.30210038, 103.77413303),
+                        new LatLng(1.30150508, 103.77441198), new LatLng(1.30143, 103.77444953), new LatLng(1.30131738, 103.77448708),
+                        new LatLng(1.30120475, 103.77448708), new LatLng(1.30110822, 103.77448171), new LatLng(1.30106531, 103.77447098),
+                        new LatLng(1.30098487, 103.77440661), new LatLng(1.3007918, 103.7742725), new LatLng(1.30069527, 103.77416521),
+                        new LatLng(1.30066845, 103.77416521), new LatLng(1.30085079, 103.77392381), new LatLng(1.30100096, 103.77367705),
+                        new LatLng(1.30105459, 103.77355903), new LatLng(1.30109749, 103.77344638), new LatLng(1.30111358, 103.77336055),
+                        new LatLng(1.30113503, 103.77322644), new LatLng(1.30114576, 103.77306014), new LatLng(1.30113503, 103.7729153),
+                        new LatLng(1.30110822, 103.77271682), new LatLng(1.30109213, 103.77249688), new LatLng(1.3010814, 103.77238423),
+                        new LatLng(1.30106531, 103.77221256), new LatLng(1.30108101, 103.77205068), new LatLng(1.30108637, 103.77196485),
+                        new LatLng(1.30117754, 103.77165907), new LatLng(1.30136525, 103.77105289), new LatLng(1.30155832, 103.77055937),
+                        new LatLng(1.30235205, 103.77099389), new LatLng(1.30248612, 103.77115482), new LatLng(1.30261484, 103.77164298),
+                        new LatLng(1.30261484, 103.77180391), new LatLng(1.30283472, 103.77247983), new LatLng(1.30285081, 103.77259785),
+                        new LatLng(1.30286154, 103.77272659), new LatLng(1.30285081, 103.77291971), new LatLng(1.30281863, 103.77311283),
+                        new LatLng(1.30269528, 103.77346688))
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }
+
+    public static class Area4 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng(1.30069527, 103.77416521), new LatLng(1.30066845, 103.77416521), new LatLng(1.30085079, 103.77392381),
+                        new LatLng(1.30100096, 103.77367705), new LatLng(1.30105459, 103.77355903), new LatLng(1.30109749, 103.77344638),
+                        new LatLng(1.30111358, 103.77336055), new LatLng(1.30113503, 103.77322644), new LatLng(1.30114576, 103.77306014),
+                        new LatLng(1.30113503, 103.7729153), new LatLng(1.30110822, 103.77271682), new LatLng(1.30109213, 103.77249688),
+                        new LatLng(1.3010814, 103.77238423), new LatLng(1.30106531, 103.77221256), new LatLng(1.30108101, 103.77205068),
+                        new LatLng(1.30108637, 103.77196485), new LatLng(1.30117754, 103.77165907), new LatLng(1.30136525, 103.77105289),
+                        new LatLng(1.30155832, 103.77055937), new LatLng(1.30113772, 103.77028003), new LatLng(1.30064432, 103.77008691),
+                        new LatLng(1.30040834, 103.76999035), new LatLng(1.300226, 103.76994744), new LatLng(1.29916412, 103.76990452),
+                        new LatLng(1.29833821, 103.76987234), new LatLng(1.29611791, 103.76971141), new LatLng(1.29638606, 103.77103105),
+                        new LatLng(1.29637534, 103.77178207), new LatLng(1.2965255, 103.77218977), new LatLng(1.29667567, 103.77239361),
+                        new LatLng(1.29693309, 103.77260819), new LatLng(1.29728705, 103.77285495), new LatLng(1.29772682, 103.7730588),
+                        new LatLng(1.29793062, 103.77317682), new LatLng(1.2982524, 103.77362743), new LatLng(1.29854201, 103.77400294),
+                        new LatLng(1.29889597, 103.7742497), new LatLng(1.29913194, 103.77441064), new LatLng(1.29929283, 103.77450719),
+                        new LatLng(1.29929283, 103.77464667), new LatLng (1.29940009, 103.77474323), new LatLng(1.29960389, 103.77470031),
+                        new LatLng(1.2997326, 103.77460375), new LatLng(1.29999003, 103.77461448), new LatLng(1.30021527, 103.77460375),
+                        new LatLng(1.30035471, 103.77453938), new LatLng(1.30050488, 103.77443209), new LatLng(1.30062286, 103.77427116))
+                .strokeColor(Color.BLUE)
+                .strokeWidth((float)0.5)
+                .fillColor(Color.BLUE);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }
+
+/*    public static class Area5 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area6 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area7 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area8 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area9 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area10 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area11 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area12 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area13 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area14 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
+
+/*    public static class Area15 {
+        private static PolygonOptions Po = new PolygonOptions()
+                .add(new LatLng)
+                .strokeColor(Color.GREEN)
+                .strokeWidth((float)0.5)
+                .fillColor(0x7F00FF00);
+
+        public static PolygonOptions getPoly() {
+            return Po;
+        }
+    }*/
 }

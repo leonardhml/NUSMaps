@@ -151,6 +151,21 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
         map.setOnMapLongClickListener(this);
         map.setOnMarkerClickListener(this);
 
+        Polygon polygon1 = map.addPolygon(new PolygonCoordinatesDatabase.Area1().getPoly());
+        Polygon polygon2 = map.addPolygon(new PolygonCoordinatesDatabase.Area2().getPoly());
+        Polygon polygon3 = map.addPolygon(new PolygonCoordinatesDatabase.Area3().getPoly());
+        Polygon polygon4 = map.addPolygon(new PolygonCoordinatesDatabase.Area4().getPoly());
+        //Polygon polygon5 = map.addPolygon(new PolygonCoordinatesDatabase.Area5().getPoly());
+        //Polygon polygon6 = map.addPolygon(new PolygonCoordinatesDatabase.Area6().getPoly());
+        //Polygon polygon7 = map.addPolygon(new PolygonCoordinatesDatabase.Area7().getPoly());
+        //Polygon polygon8 = map.addPolygon(new PolygonCoordinatesDatabase.Area8().getPoly());
+        //Polygon polygon9 = map.addPolygon(new PolygonCoordinatesDatabase.Area9().getPoly());
+        //Polygon polygon10 = map.addPolygon(new PolygonCoordinatesDatabase.Area10().getPoly());
+        //Polygon polygon11 = map.addPolygon(new PolygonCoordinatesDatabase.Area11().getPoly());
+        //Polygon polygon12 = map.addPolygon(new PolygonCoordinatesDatabase.Area12().getPoly());
+        //Polygon polygon13 = map.addPolygon(new PolygonCoordinatesDatabase.Area13().getPoly());
+        //Polygon polygon14 = map.addPolygon(new PolygonCoordinatesDatabase.Area14().getPoly());
+        //Polygon polygon15 = map.addPolygon(new PolygonCoordinatesDatabase.Area15().getPoly());
     }
 
     @Override
