@@ -1,5 +1,10 @@
 package leofx.nusmaps;
 
+
+import java.util.HashMap;
+import java.util.Date;
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,28 +22,45 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.app.FragmentTransaction;
 import android.util.Log;
+
 import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
-import java.util.List;
 
-
-public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
+public class MainScreen extends FragmentActivity implements OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener, OnMarkerClickListener {
 
     private String[] navigationItems;
     private DrawerLayout mDrawerlayout;
     private ListView mDrawerList;
     GoogleMap map;
 
+    //added_fx
+    private ArrayList<LatLng> mLocationPoints = null;
+    PolylineOptions mPolylineOptions;
+    private boolean checkClick = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
@@ -70,8 +92,11 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
         MapFragment mapFrag = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapView));
         mapFrag.getMapAsync(this);
 
+        //added!!!_fx
+        mLocationPoints = new ArrayList<LatLng>();
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,6 +138,14 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
 
     //    map.addGroundOverlay(nusOverlayOptions);
 
+        //added!!!_fx
+        map.setMyLocationEnabled(true);
+
+        map.setOnMapClickListener(this);
+        map.setOnMapLongClickListener(this);
+        map.setOnMarkerClickListener(this);
+
+
 
     }
 
@@ -125,6 +158,50 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback{
                 int position = data.getIntExtra("leofx.nusmaps.position", 0);
                 Polyline line = map.addPolyline(BusDirectoryDatabase.getLatLngList().get(position).color(BusDirectoryDatabase.COLORS[position]));
             }
+        }
+    }
+
+    // added_fx
+    @Override
+    public void onMapClick(LatLng latLng) {
+        if (checkClick == false) {
+
+            map.addMarker(new MarkerOptions().position(latLng).icon(
+                    BitmapDescriptorFactory.fromResource(R.drawable.pin1)));
+            mLocationPoints.add(latLng);
+        }
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+        map.clear();
+        mLocationPoints.clear();
+        checkClick = false;
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        System.out.println("Marker lat long = " + marker.getPosition());
+        System.out.println("First position check " + mLocationPoints.get(0));
+        System.out.println("**********All arrayPoints***********" + mLocationPoints);
+        if (mLocationPoints.get(0).equals(marker.getPosition())) {
+            System.out.println("********First Point choose************");
+            countPolygonPoints();
+        }
+
+        return false;
+    }
+
+    private void countPolygonPoints() {
+
+        if (mLocationPoints.size() >= 3) {
+            checkClick = true;
+            PolygonOptions polygonOptions = new PolygonOptions();
+            polygonOptions.addAll(mLocationPoints);
+            polygonOptions.strokeColor(Color.BLUE);
+            polygonOptions.strokeWidth(7);
+            polygonOptions.fillColor(Color.CYAN);
+            Polygon polygon = map.addPolygon(polygonOptions);
         }
     }
 }
