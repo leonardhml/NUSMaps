@@ -62,6 +62,10 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
 
     protected static List<Map<String, PlaceOfInterestInfo>> POIListByArea;
 
+    // For bus directory uses
+    private List<PolylineOptions> latLngList = null;
+    private List<List<PlaceOfInterestInfo>> busMarkerList = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
         navigationItems = getResources().getStringArray(R.array.navigation_items);
         mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        POIListByArea = initialisePOIList();
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navigationItems));
 
@@ -99,7 +104,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
 
         //added!!!_fx
         mLocationPoints = new ArrayList<LatLng>();
-        POIListByArea = initialisePOIList();
+
 
 
     }
@@ -184,7 +189,11 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
                 mDrawerlayout.closeDrawers();
                 map.clear();
                 int position = data.getIntExtra("leofx.nusmaps.position", 0);
-                Polyline line = map.addPolyline(BusDirectoryDatabase.getLatLngList().get(position).color(BusDirectoryDatabase.COLORS[position]));
+                if (latLngList == null) { latLngList = BusDirectoryDatabase.getLatLngList(); }
+                if (busMarkerList == null) { busMarkerList = BusDirectoryDatabase.getBusMarkersList(); }
+                Polyline line = map.addPolyline(latLngList.get(position).color(BusDirectoryDatabase.COLORS[position]));
+
+                addMarkersForBusRoute(position);
             }
         }
     }
@@ -230,6 +239,14 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
             polygonOptions.strokeWidth(7);
             polygonOptions.fillColor(Color.CYAN);
             Polygon polygon = map.addPolygon(polygonOptions);
+        }
+    }
+
+    private void addMarkersForBusRoute(int pos) {
+        List<PlaceOfInterestInfo> markersToAdd = busMarkerList.get(pos);
+        System.out.println(pos + " " + (markersToAdd.size()));
+        for (PlaceOfInterestInfo p : markersToAdd) {
+            map.addMarker(new MarkerOptions().position(p.coordinates).title(p.name));
         }
     }
 }

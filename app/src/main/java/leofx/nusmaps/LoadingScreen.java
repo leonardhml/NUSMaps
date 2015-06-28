@@ -10,7 +10,7 @@ import android.os.Handler;
 
 public class LoadingScreen extends ActionBarActivity {
 
-    public static int LOADING_SCREEN_TIMER = 3000;
+    public static int LOADING_SCREEN_TIMER = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
