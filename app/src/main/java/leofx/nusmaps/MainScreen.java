@@ -48,7 +48,7 @@ import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
-public class MainScreen extends FragmentActivity implements OnMapReadyCallback, OnMapClickListener, OnMapLongClickListener, OnMarkerClickListener {
+public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
 
     private String[] navigationItems;
     private DrawerLayout mDrawerlayout;
@@ -173,18 +173,12 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
 
     //    map.addGroundOverlay(nusOverlayOptions);
 
-        //added!!!_fx
-        map.setMyLocationEnabled(true);
-
-        map.setOnMapClickListener(this);
-        map.setOnMapLongClickListener(this);
-        map.setOnMarkerClickListener(this);
 
         Polygon polygon1 = map.addPolygon(new PolygonCoordinatesDatabase.Area1().getPoly());
         Polygon polygon2 = map.addPolygon(new PolygonCoordinatesDatabase.Area2().getPoly());
         Polygon polygon3 = map.addPolygon(new PolygonCoordinatesDatabase.Area3().getPoly());
         Polygon polygon4 = map.addPolygon(new PolygonCoordinatesDatabase.Area4().getPoly());
-        //Polygon polygon5 = map.addPolygon(new PolygonCoordinatesDatabase.Area5().getPoly());
+        Polygon polygon5 = map.addPolygon(new PolygonCoordinatesDatabase.Area5().getPoly());
         //Polygon polygon6 = map.addPolygon(new PolygonCoordinatesDatabase.Area6().getPoly());
         //Polygon polygon7 = map.addPolygon(new PolygonCoordinatesDatabase.Area7().getPoly());
         //Polygon polygon8 = map.addPolygon(new PolygonCoordinatesDatabase.Area8().getPoly());
@@ -213,50 +207,6 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
         }
     }
 
-    // added_fx
-    @Override
-    public void onMapClick(LatLng latLng) {
-        if (checkClick == false) {
-
-            map.addMarker(new MarkerOptions().position(latLng).icon(
-                    BitmapDescriptorFactory.fromResource(R.drawable.pin1)));
-            mLocationPoints.add(latLng);
-        }
-    }
-
-    @Override
-    public void onMapLongClick(LatLng latLng) {
-        map.clear();
-        mLocationPoints.clear();
-        checkClick = false;
-    }
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        System.out.println("Marker lat long = " + marker.getPosition());
-        System.out.println("First position check " + mLocationPoints.get(0));
-        System.out.println("**********All arrayPoints***********" + mLocationPoints);
-        if (mLocationPoints.get(0).equals(marker.getPosition())) {
-            System.out.println("********First Point choose************");
-            countPolygonPoints();
-        }
-
-        return false;
-    }
-
-    private void countPolygonPoints() {
-
-        if (mLocationPoints.size() >= 3) {
-            checkClick = true;
-            PolygonOptions polygonOptions = new PolygonOptions();
-            polygonOptions.addAll(mLocationPoints);
-            polygonOptions.strokeColor(Color.BLUE);
-            polygonOptions.strokeWidth(7);
-            polygonOptions.fillColor(Color.CYAN);
-            Polygon polygon = map.addPolygon(polygonOptions);
-        }
-    }
-
     private void addMarkersForBusRoute(int pos) {
         List<PlaceOfInterestInfo> markersToAdd = busMarkerList.get(pos);
         System.out.println(pos + " " + (markersToAdd.size()));
@@ -264,4 +214,5 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
             map.addMarker(new MarkerOptions().position(p.coordinates).title(p.name));
         }
     }
+
 }
