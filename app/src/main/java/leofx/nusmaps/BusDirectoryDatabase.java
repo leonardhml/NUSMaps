@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by leona_000 on 25/6/2015.
  */
+
 public class BusDirectoryDatabase {
 
     public static final String[] BUSLIST = {"A1", "A2", "B", "C", "D1", "D2", "A1E", "A2E(AM)", "A2E(PM)", "UT-CLB Direct", "UT-FoS Direct"};
@@ -61,7 +62,122 @@ public class BusDirectoryDatabase {
         a1BusStops.add(MainScreen.POIListByArea.get(8).get("Busstop: Opp House 12"));
         a1BusStops.add(MainScreen.POIListByArea.get(8).get("Busstop: House 7"));
 
+        List<PlaceOfInterestInfo> a2BusStops = new ArrayList<PlaceOfInterestInfo>();
+        a2BusStops.add(MainScreen.POIListByArea.get(9).get("Busstop: PGP Terminal"));
+        a2BusStops.add(MainScreen.POIListByArea.get(8).get("Busstop: Between Houses 14 & 15"));
+        a2BusStops.add(MainScreen.POIListByArea.get(8).get("Busstop: House 12"));
+        a2BusStops.add(MainScreen.POIListByArea.get(7).get("Busstop: Opp Hon Sui Sen Memorial Lib"));
+        a2BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: COM2"));
+        a2BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Temasek Hall"));
+        a2BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Eusoff Hall"));
+        a2BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Ventus"));
+        a2BusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Computer Centre"));
+        a2BusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Opposite YIH"));
+        a2BusStops.add(MainScreen.POIListByArea.get(3).get("Busstop: Museum"));
+        a2BusStops.add(MainScreen.POIListByArea.get(2).get("Busstop: UHC/Kent Ridge Hall"));
+        a2BusStops.add(MainScreen.POIListByArea.get(2).get("Busstop: Opp University Hall"));
+        a2BusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: Blk S17"));
+        a2BusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Opp NUH"));
+        a2BusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Opp Kent Ridge MRT Station"));
+
+        List<PlaceOfInterestInfo> bBusStops = new ArrayList<PlaceOfInterestInfo>();
+        bBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: The Japanese Primary School"));
+        bBusStops.add(MainScreen.POIListByArea.get(3).get("Busstop: Museum"));
+        bBusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Yusof Ishak House"));
+        bBusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Central Library"));
+        bBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: LT13"));
+        bBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: AS7"));
+        bBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: COM2"));
+        bBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Temasek Hall"));
+        bBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Eusoff Hall"));
+        bBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Ventus"));
+        bBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Computer Centre"));
+        bBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Opposite YIH"));
+        bBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Raffles Hall"));
+        bBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Opp Blk EA"));
+
+        List<PlaceOfInterestInfo> cBusStops = new ArrayList<PlaceOfInterestInfo>();
+        cBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: The Japanese Primary School"));
+        cBusStops.add(MainScreen.POIListByArea.get(3).get("Busstop: Museum"));
+        cBusStops.add(MainScreen.POIListByArea.get(2).get("Busstop: UHC/Kent Ridge Hall"));
+        cBusStops.add(MainScreen.POIListByArea.get(2).get("Busstop: Opp University Hall"));
+        cBusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: Blk S17"));
+        cBusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: LT29"));
+        cBusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: University Hall"));
+        cBusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Opp UHC"));
+        cBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Raffles Hall"));
+        cBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Opp Blk EA"));
+
+        List<PlaceOfInterestInfo> d1BusStops = new ArrayList<PlaceOfInterestInfo>();
+        d1BusStops.add(MainScreen.POIListByArea.get(7).get("Busstop: Opp Hon Sui Sen Memorial Lib"));
+        d1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: COM2"));
+        d1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Ventus"));
+        d1BusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Computer Centre"));
+        d1BusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Opposite YIH"));
+        d1BusStops.add(MainScreen.POIListByArea.get(3).get("Busstop: Museum"));
+        d1BusStops.add(MainScreen.POIListByArea.get(11).get("Busstop: U-Town"));
+        d1BusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Yusof Ishak House"));
+        d1BusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Central Library"));
+        d1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: LT13"));
+        d1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: AS7"));
+        d1BusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: COM2"));
+        d1BusStops.add(MainScreen.POIListByArea.get(7).get("Busstop: BIZ2"));
+
+        List<PlaceOfInterestInfo> d2BusStops = new ArrayList<PlaceOfInterestInfo>();
+        d2BusStops.add(MainScreen.POIListByArea.get(9).get("Busstop: PGP Terminal"));
+        d2BusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Kent Ridge MRT Station"));
+        d2BusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: LT29"));
+        d2BusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: University Hall"));
+        d2BusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Opp UHC"));
+        d2BusStops.add(MainScreen.POIListByArea.get(3).get("Busstop: Museum"));
+        d2BusStops.add(MainScreen.POIListByArea.get(11).get("Busstop: U-Town"));
+        d2BusStops.add(MainScreen.POIListByArea.get(2).get("Busstop: UHC/Kent Ridge Hall"));
+        d2BusStops.add(MainScreen.POIListByArea.get(2).get("Busstop: Opp University Hall"));
+        d2BusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: Blk S17"));
+        d2BusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Opp Kent Ridge MRT Station"));
+
+        List<PlaceOfInterestInfo> a1eBusStops = new ArrayList<PlaceOfInterestInfo>();
+        a1eBusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Kent Ridge MRT Station"));
+        a1eBusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: LT29"));
+        a1eBusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Central Library"));
+        a1eBusStops.add(MainScreen.POIListByArea.get(7).get("Busstop: BIZ2"));
+        a1eBusStops.add(MainScreen.POIListByArea.get(9).get("Busstop: PGP Terminal"));
+
+        List<PlaceOfInterestInfo> a2eAmBusStops = new ArrayList<PlaceOfInterestInfo>();
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Opp Kent Ridge MRT Station"));
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Ventus"));
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Computer Centre"));
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: Blk S17"));
+
+
+        List<PlaceOfInterestInfo> a2ePmBusStops = new ArrayList<PlaceOfInterestInfo>();
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(10).get("Busstop: Opp Kent Ridge MRT Station"));
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(6).get("Busstop: Ventus"));
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(4).get("Busstop: Computer Centre"));
+        a2eAmBusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: Blk S17"));
+
+
+
+        List<PlaceOfInterestInfo> utclbBusStops = new ArrayList<PlaceOfInterestInfo>();
+        utclbBusStops.add(MainScreen.POIListByArea.get(11).get("Busstop: U-Town"));
+        utclbBusStops.add(MainScreen.POIListByArea.get(5).get("Busstop: Central Library"));
+
+
+        List<PlaceOfInterestInfo> utfosBusStops = new ArrayList<PlaceOfInterestInfo>();
+        utfosBusStops.add(MainScreen.POIListByArea.get(11).get("Busstop: U-Town"));
+        utfosBusStops.add(MainScreen.POIListByArea.get(1).get("Busstop: LT29"));
+
         busMarkersList.add(a1BusStops);
+        busMarkersList.add(a2BusStops);
+        busMarkersList.add(bBusStops);
+        busMarkersList.add(cBusStops);
+        busMarkersList.add(d1BusStops);
+        busMarkersList.add(d2BusStops);
+        busMarkersList.add(a1eBusStops);
+        busMarkersList.add(a2eAmBusStops);
+        busMarkersList.add(a2ePmBusStops);
+        busMarkersList.add(utclbBusStops);
+        busMarkersList.add(utfosBusStops);
 
         return busMarkersList;
     }
