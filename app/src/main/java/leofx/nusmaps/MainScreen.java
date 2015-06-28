@@ -145,8 +145,6 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback, 
         map.setOnMapLongClickListener(this);
         map.setOnMarkerClickListener(this);
 
-
-
     }
 
     @Override
