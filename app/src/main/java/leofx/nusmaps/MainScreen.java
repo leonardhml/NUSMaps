@@ -180,10 +180,10 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
         Polygon polygon4 = map.addPolygon(new PolygonCoordinatesDatabase.Area4().getPoly());
         Polygon polygon5 = map.addPolygon(new PolygonCoordinatesDatabase.Area5().getPoly());
         Polygon polygon6 = map.addPolygon(new PolygonCoordinatesDatabase.Area6().getPoly());
-        //Polygon polygon7 = map.addPolygon(new PolygonCoordinatesDatabase.Area7().getPoly());
-        //Polygon polygon8 = map.addPolygon(new PolygonCoordinatesDatabase.Area8().getPoly());
-        //Polygon polygon9 = map.addPolygon(new PolygonCoordinatesDatabase.Area9().getPoly());
-        //Polygon polygon10 = map.addPolygon(new PolygonCoordinatesDatabase.Area10().getPoly());
+        Polygon polygon7 = map.addPolygon(new PolygonCoordinatesDatabase.Area7().getPoly());
+        Polygon polygon8 = map.addPolygon(new PolygonCoordinatesDatabase.Area8().getPoly());
+        Polygon polygon9 = map.addPolygon(new PolygonCoordinatesDatabase.Area9().getPoly());
+        Polygon polygon10 = map.addPolygon(new PolygonCoordinatesDatabase.Area10().getPoly());
         //Polygon polygon11 = map.addPolygon(new PolygonCoordinatesDatabase.Area11().getPoly());
         //Polygon polygon12 = map.addPolygon(new PolygonCoordinatesDatabase.Area12().getPoly());
         //Polygon polygon13 = map.addPolygon(new PolygonCoordinatesDatabase.Area13().getPoly());
