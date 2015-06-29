@@ -105,8 +105,6 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
         //added!!!_fx
         mLocationPoints = new ArrayList<LatLng>();
 
-
-
     }
 
     private List<Map<String, PlaceOfInterestInfo>> initialisePOIList() {
@@ -124,10 +122,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
         POIListByArea.add(MarkersDatabase.Area9.getArea9POIs());
         POIListByArea.add(MarkersDatabase.Area10.getArea10POIs());
         POIListByArea.add(MarkersDatabase.Area11.getArea11POIs());
-        POIListByArea.add(MarkersDatabase.Area12.getArea12POIs());
-        POIListByArea.add(MarkersDatabase.Area13.getArea13POIs());
-        POIListByArea.add(MarkersDatabase.Area14.getArea14POIs());
-        POIListByArea.add(MarkersDatabase.Area15.getArea15POIs());
+
         return POIListByArea;
     }
 
@@ -185,6 +180,11 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
         Polygon polygon9 = map.addPolygon(new PolygonCoordinatesDatabase.Area9().getPoly());
         Polygon polygon10 = map.addPolygon(new PolygonCoordinatesDatabase.Area10().getPoly());
         Polygon polygon11 = map.addPolygon(new PolygonCoordinatesDatabase.Area11().getPoly());
+
+        Marker marker1 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.30603684, 103.7729609))
+                .title("UTown")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin9)));
     }
 
     @Override

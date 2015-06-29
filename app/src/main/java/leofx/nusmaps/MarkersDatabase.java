@@ -170,39 +170,4 @@ public class MarkersDatabase {
         }
     }
 
-    public static class Area12 {
-        private static Map<String, PlaceOfInterestInfo> area12POIs = new HashMap<String, PlaceOfInterestInfo>();
-
-        public static Map<String, PlaceOfInterestInfo> getArea12POIs() {
-            area12POIs.put("", new PlaceOfInterestInfo("", new LatLng(0,0), ""));
-            return area12POIs;
-        }
-    }
-
-    public static class Area13 {
-        private static Map<String, PlaceOfInterestInfo> area13POIs = new HashMap<String, PlaceOfInterestInfo>();
-
-        public static Map<String, PlaceOfInterestInfo> getArea13POIs() {
-            area13POIs.put("", new PlaceOfInterestInfo("", new LatLng(0,0), ""));
-            return area13POIs;
-        }
-    }
-
-    public static class Area14 {
-        private static Map<String, PlaceOfInterestInfo> area14POIs = new HashMap<String, PlaceOfInterestInfo>();
-
-        public static Map<String, PlaceOfInterestInfo> getArea14POIs() {
-            area14POIs.put("", new PlaceOfInterestInfo("", new LatLng(0,0), ""));
-            return area14POIs;
-        }
-    }
-
-    public static class Area15 {
-        private static Map<String, PlaceOfInterestInfo> area15POIs = new HashMap<String, PlaceOfInterestInfo>();
-
-        public static Map<String, PlaceOfInterestInfo> getArea15POIs() {
-            area15POIs.put("", new PlaceOfInterestInfo("", new LatLng(0,0), ""));
-            return area15POIs;
-        }
-    }
 }
