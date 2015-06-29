@@ -1,6 +1,5 @@
 package leofx.nusmaps;
 
-import android.graphics.Color;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolygonOptions;
