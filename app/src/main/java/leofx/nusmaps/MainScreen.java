@@ -182,9 +182,50 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
         Polygon polygon11 = map.addPolygon(new PolygonCoordinatesDatabase.Area11().getPoly());
 
         Marker marker1 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.29619031, 103.78018141))
+                .title("Area 1")
+                .snippet("Faculty of Science - Faculty of Dentistry - Yong Loo Lin School of Medicine"));
+        Marker marker2 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.29947249, 103.7774992))
+                .title("Area 2")
+                .snippet("Sports & Recreation Centre - University Health Centre - NUS Field"));
+        Marker marker3 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.30187513, 103.77277851))
+                .title("Area 3")
+                .snippet("University Cultural Centre - Yong Siew Toh Conservatory of Music - Lee Kong Chian Natural History Museum"));
+        Marker marker4 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.2990649, 103.77204895))
+                .title("Area 4")
+                .snippet("Faculty of Engineering - School of Design and Environment - Computer Centre - Raffles Hall"));
+        Marker marker5 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.29694114, 103.77531052))
+                .title("Area 5")
+                .snippet("University Hall - Yusof Ishak House - Central Library - Ridge View Residence"));
+        Marker marker6 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.29447414, 103.77131939))
+                .title("Area 6")
+                .snippet("Faculty of Arts & Social Sciences - School of Computing - Temasek Hall - Eusoff Hall"));
+        Marker marker7 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.29272578, 103.77487063))
+                .title("Area 7")
+                .snippet("NUS Business School - Heng Mui Keng Terrace"));
+        Marker marker8 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.2938413, 103.77846479))
+                .title("Area 8")
+                .snippet("NUS Enterprise Incubator"));
+        Marker marker9 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.29167462, 103.78122211))
+                .title("Area 9")
+                .snippet("Prince George's Park Residence - King Edward VII Hall - "));
+        Marker marker10 = map.addMarker(new MarkerOptions()
+                .position(new LatLng(1.29445268, 103.78314257))
+                .title("Area 10")
+                .snippet("NUH"));
+        Marker marker11 = map.addMarker(new MarkerOptions()
                 .position(new LatLng(1.30603684, 103.7729609))
-                .title("UTown")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin9)));
+                .title("Area 11")
+                .snippet("UTown"));
+
     }
 
     @Override
