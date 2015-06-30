@@ -30,8 +30,8 @@ public class DirectoryDatabase {
         List<String> c_stores = new ArrayList<String>();
 
 
-        admin.add("Science");
-        admin.add("Medicine");
+        admin.add("Association of Pacific Rim Universities");
+        admin.add("Centre for Development of Teaching and Learning");
         admin.add("Engineering");
         admin.add("SoC");
         admin.add("FASS");
