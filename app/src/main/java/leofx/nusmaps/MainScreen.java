@@ -67,6 +67,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
     private List<List<PlaceOfInterestInfo>> busMarkerList = null;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -87,7 +88,7 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
                 switch (position) {
                     case 0:
                         i = new Intent(MainScreen.this, DirectoryScreen.class);
-                        startActivity(i);
+                        startActivityForResult(i, 0);
                         break;
                     case 2:
                         i = new Intent(MainScreen.this, BusDirectoryScreen.class);
@@ -169,6 +170,11 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
     //    map.addGroundOverlay(nusOverlayOptions);
 
 
+        constructPolygonsAndMarkers();
+
+    }
+
+    private void constructPolygonsAndMarkers() {
         Polygon polygon1 = map.addPolygon(new PolygonCoordinatesDatabase.Area1().getPoly());
         Polygon polygon2 = map.addPolygon(new PolygonCoordinatesDatabase.Area2().getPoly());
         Polygon polygon3 = map.addPolygon(new PolygonCoordinatesDatabase.Area3().getPoly());
@@ -225,11 +231,37 @@ public class MainScreen extends FragmentActivity implements OnMapReadyCallback {
                 .position(new LatLng(1.30603684, 103.7729609))
                 .title("Area 11")
                 .snippet("UTown"));
-
     }
 
     @Override
     public void onActivityResult(int reqCode, int resCode, Intent data) {
+
+        if (reqCode == 0) {
+            if (resCode == RESULT_OK) {
+                mDrawerlayout.closeDrawers();
+                map.clear();
+                String name = data.getStringExtra("leofx.nusmaps.name");
+                LatLng latLng = data.getParcelableExtra("leofx.nusmaps.latLng");
+                String info = data.getStringExtra("leofx.nusmaps.info");
+                String tag = data.getStringExtra("leofx.nusmaps.tag");
+                if (info.isEmpty()) {
+                    map.addMarker(new MarkerOptions()
+                    .position(latLng)
+                    .title(name))
+                    .showInfoWindow();
+                } else {
+                    map.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .title(name)
+                            .snippet(info))
+                            .showInfoWindow();
+                }
+
+                map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+            }
+        }
+
         if (reqCode == 2) {
             if (resCode == RESULT_OK) {
                 mDrawerlayout.closeDrawers();

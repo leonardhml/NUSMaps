@@ -1,5 +1,6 @@
 package leofx.nusmaps;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,9 +33,19 @@ public class DirectoryScreen extends ActionBarActivity {
         dirList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                return false;
-                // start activities to mainScreen with different extra values corresponding to where on the map the
-                // marker should point to
+                PlaceOfInterestInfo selected = parentDir.get(groupPosition).childList.get(childPosition);
+                String name = selected.name;
+                LatLng latLng = selected.coordinates;
+                String info = selected.info;
+                String tag = selected.tag;
+                Intent i = new Intent();
+                i.putExtra("leofx.nusmaps.name", name);
+                i.putExtra("leofx.nusmaps.latLng", latLng);
+                i.putExtra("leofx.nusmaps.info", info);
+                i.putExtra("leofx.nusmaps.tag", tag);
+                setResult(RESULT_OK, i);
+                finish();
+                return true;
             }
         });
     }

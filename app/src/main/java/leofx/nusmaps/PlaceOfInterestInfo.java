@@ -10,10 +10,12 @@ public class PlaceOfInterestInfo {
     public String name;
     public LatLng coordinates;
     public String info;
+    public String tag;
 
-    public PlaceOfInterestInfo(String name, LatLng coordinates, String info) {
+    public PlaceOfInterestInfo(String name, LatLng coordinates, String tag, String info) {
         this.name = name;
         this.coordinates = coordinates;
         this.info = info;
+        this.tag = tag;
     }
 }

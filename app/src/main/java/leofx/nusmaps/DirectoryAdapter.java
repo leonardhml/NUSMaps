@@ -39,7 +39,7 @@ public class DirectoryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int parentPosition, int childPosition) {
-        return parentDir.get(parentPosition).childList.get(childPosition);
+        return parentDir.get(parentPosition).childList.get(childPosition).name;
     }
 
     @Override
