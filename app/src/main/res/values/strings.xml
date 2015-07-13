@@ -6,6 +6,8 @@
     <string name="loading_screen_title">NUSMap</string>
     <string name="loading_screen_subtitle">By LeoFX</string>
     <string name="title_activity_main_screen">NUSMap</string>
+    <string name="search_hint">Canteens, LTs, etc.</string>
+    <string name="search_title">Search</string>
     
     <string-array name="navigation_items">
         <item name="directory">Directory</item>
@@ -17,5 +19,6 @@
 
     <string name="title_activity_directory_screen">DirectoryScreen</string>
     <string name="title_activity_bus_directory_screen">BusDirectoryScreen</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>

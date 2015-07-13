@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     signingConfigs {
         config1 {
@@ -49,7 +50,7 @@ dependencies {
     compile 'com.android.support:support-v13:22.2.0'
     compile 'com.android.support:support-v4:22.2.0'
     compile 'com.google.maps.android:android-maps-utils:0.3+'
-
     // Note: these libraries require the "Google Repository" and "Android Repository"
     //       to be installed via the SDK manager.
+    compile files('libs/poi-3.12-20150511.jar')
 }

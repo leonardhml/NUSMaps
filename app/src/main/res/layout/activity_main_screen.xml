@@ -3,18 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
     <!-- The main content view -->
     <FrameLayout
         android:id="@+id/content_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
         <fragment
             android:id="@+id/mapView"
             android:name="com.google.android.gms.maps.MapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/abc_action_bar_title_item" />
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            tools:layout="@layout/abc_action_bar_title_item"
+            android:layout_gravity="right|center_vertical" />
 
     </FrameLayout>
     <!-- The navigation drawer -->
@@ -23,8 +26,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="2dp"
         android:background="#111" />
 
 </android.support.v4.widget.DrawerLayout>

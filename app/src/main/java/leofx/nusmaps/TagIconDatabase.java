@@ -12,7 +12,22 @@ public class TagIconDatabase {
 
     public Map<String, String> getTagIconMatching() {
         Map<String, String> tagIconMap = new HashMap<String, String>();
-        tagIconMap.put("","");
+        tagIconMap.put("Admin","");
+        tagIconMap.put("Busstop","");
+        tagIconMap.put("Cafe","");
+        tagIconMap.put("Canteen","");
+        tagIconMap.put("Cultural","");
+        tagIconMap.put("Fast Food","");
+        tagIconMap.put("Food Court","");
+        tagIconMap.put("General Stores","");
+        tagIconMap.put("Kiosk","");
+        tagIconMap.put("Lecture Theatre","");
+        tagIconMap.put("Library","");
+        tagIconMap.put("Recreation","");
+        tagIconMap.put("Research","");
+        tagIconMap.put("Residence","");
+        tagIconMap.put("Restaurant","");
+        tagIconMap.put("School","");
 
         return tagIconMap;
     }
