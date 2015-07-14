@@ -11,6 +11,7 @@ import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
@@ -71,11 +72,11 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     private LatLng coordinates11 = new LatLng(1.30603684, 103.7729609);
     GoogleMap map;
 
-    protected static List<Map<String, PlaceOfInterestInfo>> POIListByArea;
+  //  protected static List<Map<String, PlaceOfInterestInfo>> POIListByArea;
 
     // For bus directory uses
     private List<PolylineOptions> latLngList = null;
-    private List<List<PlaceOfInterestInfo>> busMarkerList = null;
+//    private List<List<PlaceOfInterestInfo>> busMarkerList = null;
 
 
 
@@ -88,7 +89,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         navigationItems = getResources().getStringArray(R.array.navigation_items);
         mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        POIListByArea = initialisePOIList();
+   //     POIListByArea = initialisePOIList();
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navigationItems));
 
@@ -308,7 +309,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                 map.clear();
                 int position = data.getIntExtra("leofx.nusmaps.position", 0);
                 if (latLngList == null) { latLngList = BusDirectoryDatabase.getLatLngList(); }
-                if (busMarkerList == null) { busMarkerList = BusDirectoryDatabase.getBusMarkersList(); }
+        //        if (busMarkerList == null) { busMarkerList = BusDirectoryDatabase.getBusMarkersList(); }
                 Polyline line = map.addPolyline(latLngList.get(position).color(BusDirectoryDatabase.COLORS[position]));
 
                 addMarkersForBusRoute(position);
@@ -317,10 +318,19 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     }
 
     private void addMarkersForBusRoute(int pos) {
-        List<PlaceOfInterestInfo> markersToAdd = busMarkerList.get(pos);
-        System.out.println(pos + " " + (markersToAdd.size()));
-        for (PlaceOfInterestInfo p : markersToAdd) {
-            map.addMarker(new MarkerOptions().position(p.coordinates).title(p.name));
+        String[] busStopsToAdd = BusDirectoryDatabase.allBusStops[pos];
+        Cursor c = new MarkersDatabaseTable(this).queryForBusStops(busStopsToAdd);
+
+        c.moveToFirst();
+        while(!c.isAfterLast()) {
+            String name = c.getString(c.getColumnIndex("Name"));
+            String coordinates = c.getString(c.getColumnIndex("Coordinates"));
+            String[] latLngStrings = coordinates.split(",");
+            Double lat = Double.parseDouble(latLngStrings[0].trim());
+            Double lng = Double.parseDouble(latLngStrings[1].trim());
+            LatLng latLng = new LatLng(lat, lng);
+            map.addMarker(new MarkerOptions().position(latLng).title(name));
+            c.moveToNext();
         }
     }
 

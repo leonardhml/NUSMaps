@@ -1,11 +1,8 @@
 package leofx.nusmaps;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.database.Cursor;
-import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -46,9 +43,9 @@ public class SearchActivity extends ActionBarActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             final Cursor c = db.doQuery(query);
-            List<String> resultsList = processCursor(c);
+            List<String> namesList = getNamesFromCursor(c);
          //   DatabaseCursorAdapter dbAdapter = new DatabaseCursorAdapter(this, c);
-            searchList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, resultsList));
+            searchList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, namesList));
 
             searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -80,7 +77,7 @@ public class SearchActivity extends ActionBarActivity {
         }
     }
 
-    private List<String> processCursor(Cursor c) {
+    private List<String> getNamesFromCursor(Cursor c) {
         List<String> nameList = new ArrayList<String>();
         c.moveToFirst();
         while(!c.isAfterLast()) {
