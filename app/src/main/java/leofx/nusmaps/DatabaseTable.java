@@ -9,16 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.poi.common.usermodel.Fill;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import jxl.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,7 +31,7 @@ public class DatabaseTable {
     public static final String COL_AREA = "AREA";
 
     private static final String TAG = "MarkersDatabase";
-    private static final String DATABASE_NAME = "MARKERS";
+    private static final String DATABASE_NAME = "markers";
     private static final String FTS_VIRTUAL_TABLE = "FTS";
     private static final int DATABASE_VERSION = 1;
 
@@ -96,54 +92,52 @@ public class DatabaseTable {
         private void loadWords() throws IOException {
             final Resources resources = mHelperContext.getResources();
             InputStream inputStream = resources.openRawResource(R.raw.markerinfo);
-            Workbook w = new HSSFWorkbook(new POIFSFileSystem(inputStream));
+
             try {
-
-                Sheet sheet = w.getSheetAt(0);
-                int rows = sheet.getLastRowNum();
+                Workbook w = Workbook.getWorkbook(inputStream);
+                Sheet sheet = w.getSheet(0);
+                int rows = sheet.getRows();
                 for (int row = 0; row <= rows; row++) {
-                    Cell nameCell = sheet.getRow(row).getCell(0);
-                    String name = nameCell.getStringCellValue();
+                    Cell nameCell = sheet.getCell(0, row);
+                    String name = nameCell.getContents();
 
-                    Cell latLngCell = sheet.getRow(row).getCell(1);
-                    if (latLngCell.getCellType() != 1) { latLngCell.setCellType(1); }
-                    String latLng = latLngCell.getStringCellValue();
+                    Cell latLngCell = sheet.getCell(1, row);
+                    String latLng = latLngCell.getContents();
 
-                    Cell tagCell = sheet.getRow(row).getCell(2);
+                    Cell tagCell = sheet.getCell(2, row);
                     String tag;
                     if (tagCell != null) {
-                        if (tagCell.getCellType() != 1) { tagCell.setCellType(1); }
-                        tag = tagCell.getStringCellValue().replaceAll("\\s+", "").toLowerCase();
+                        tag = tagCell.getContents().replaceAll("\\s+", "").toLowerCase();
+                    } else {
+                        tag = "";
                     }
-                    else {tag = "";}
 
-                    Cell dataCell = sheet.getRow(row).getCell(3);
+                    Cell dataCell = sheet.getCell(3, row);
                     String data;
                     if (dataCell != null) {
-                        if (dataCell.getCellType() != 1) { dataCell.setCellType(1); }
-                        data = dataCell.getStringCellValue();
+                        data = dataCell.getContents();
+                    } else {
+                        data = "";
                     }
-                    else {data = "";}
 
 
-                    Cell areaCell = sheet.getRow(row).getCell(4);
+                    Cell areaCell = sheet.getCell(4, row);
                     int a;
                     if (areaCell != null) {
-                        if (areaCell.getCellType() != 1) { areaCell.setCellType(1); }
-                        a = Integer.parseInt(areaCell.getStringCellValue());
+                        a = Integer.parseInt(areaCell.getContents());
+                    } else {
+                        a = -10000;
                     }
-                    else {a = -10000;}
 
 
                     addEntry(name, latLng, data, tag, a);
 
                 }
-                //    writer.close();
+                w.close();
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-                w.close();
             }
+            System.out.println(true);
         }
 
         public long addEntry(String name, String coordinates, String info, String tag, int area) {

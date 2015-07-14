@@ -26,7 +26,7 @@ public class DatabaseCursorAdapter extends CursorAdapter{
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        String name = cursor.getString(cursor.getColumnIndexOrThrow("NAME"));
+        String name = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
 
         TextView tv = (TextView) view;
         tv.setText(name);
