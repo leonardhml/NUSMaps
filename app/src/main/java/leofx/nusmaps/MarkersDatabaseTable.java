@@ -48,7 +48,7 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables("Markers");
-        Cursor c = db.rawQuery("SELECT Name as _id FROM Markers WHERE _id LIKE '%" + query + "%';", null);
+        Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name LIKE '%" + query + "%';", null);
        // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
         return c;
     }

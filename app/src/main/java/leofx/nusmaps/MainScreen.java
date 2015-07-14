@@ -149,7 +149,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback 
                 Intent i = new Intent(MainScreen.this, SearchActivity.class);
                 i.putExtra(SearchManager.QUERY, query);
                 i.setAction(Intent.ACTION_SEARCH);
-                startActivity(i);
+                startActivityForResult(i, 0);
                 return true;
             }
 
@@ -266,7 +266,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback 
                 LatLng latLng = data.getParcelableExtra("leofx.nusmaps.latLng");
                 String info = data.getStringExtra("leofx.nusmaps.info");
                 String tag = data.getStringExtra("leofx.nusmaps.tag");
-                if (info.isEmpty()) {
+                if (info == null || info.isEmpty()) {
                     map.addMarker(new MarkerOptions()
                     .position(latLng)
                     .title(name))
