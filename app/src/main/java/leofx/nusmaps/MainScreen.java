@@ -51,17 +51,25 @@ import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
-public class MainScreen extends ActionBarActivity implements OnMapReadyCallback {
+public class MainScreen extends ActionBarActivity implements OnMapReadyCallback, OnMarkerClickListener{
 
     private String[] navigationItems;
     private DrawerLayout mDrawerlayout;
     private ListView mDrawerList;
+    private Marker marker1, marker2, marker3, marker4, marker5,
+            marker6, marker7, marker8, marker9, marker10, marker11;
+    private LatLng coordinates1 = new LatLng(1.29619031, 103.78018141);
+    private LatLng coordinates2 = new LatLng(1.29947249, 103.7774992);
+    private LatLng coordinates3 = new LatLng(1.30187513, 103.77277851);
+    private LatLng coordinates4 = new LatLng(1.2990649, 103.77204895);
+    private LatLng coordinates5 = new LatLng(1.29694114, 103.77531052);
+    private LatLng coordinates6 = new LatLng(1.29447414, 103.77131939);
+    private LatLng coordinates7 = new LatLng(1.29272578, 103.77487063);
+    private LatLng coordinates8 = new LatLng(1.2938413, 103.77846479);
+    private LatLng coordinates9 = new LatLng(1.29167462, 103.78122211);
+    private LatLng coordinates10 = new LatLng(1.29445268, 103.78314257);
+    private LatLng coordinates11 = new LatLng(1.30603684, 103.7729609);
     GoogleMap map;
-
-    //added_fx
-    private ArrayList<LatLng> mLocationPoints = null;
-    PolylineOptions mPolylineOptions;
-    private boolean checkClick = false;
 
     protected static List<Map<String, PlaceOfInterestInfo>> POIListByArea;
 
@@ -105,9 +113,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback 
 
         MapFragment mapFrag = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapView));
         mapFrag.getMapAsync(this);
-
-        //added!!!_fx
-        mLocationPoints = new ArrayList<LatLng>();
 
     }
 
@@ -198,50 +203,63 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback 
         Polygon polygon10 = map.addPolygon(new PolygonCoordinatesDatabase.Area10().getPoly());
         Polygon polygon11 = map.addPolygon(new PolygonCoordinatesDatabase.Area11().getPoly());
 
-        Marker marker1 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.29619031, 103.78018141))
+        marker1 = map.addMarker(new MarkerOptions()
+                .position(coordinates1)
                 .title("Area 1")
-                .snippet("Faculty of Science - Faculty of Dentistry - Yong Loo Lin School of Medicine"));
-        Marker marker2 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.29947249, 103.7774992))
+                .snippet("Faculty of Science - Faculty of Dentistry - Yong Loo Lin School of Medicine")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker2 = map.addMarker(new MarkerOptions()
+                .position(coordinates2)
                 .title("Area 2")
-                .snippet("Sports & Recreation Centre - University Health Centre - NUS Field"));
-        Marker marker3 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.30187513, 103.77277851))
+                .snippet("Sports & Recreation Centre - University Health Centre - NUS Field")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker3 = map.addMarker(new MarkerOptions()
+                .position(coordinates3)
                 .title("Area 3")
-                .snippet("University Cultural Centre - Yong Siew Toh Conservatory of Music - Lee Kong Chian Natural History Museum"));
-        Marker marker4 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.2990649, 103.77204895))
+                .snippet("University Cultural Centre - Yong Siew Toh Conservatory of Music - Lee Kong Chian Natural History Museum")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker4 = map.addMarker(new MarkerOptions()
+                .position(coordinates4)
                 .title("Area 4")
-                .snippet("Faculty of Engineering - School of Design and Environment - Computer Centre - Raffles Hall"));
-        Marker marker5 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.29694114, 103.77531052))
+                .snippet("Faculty of Engineering - School of Design and Environment - Computer Centre - Raffles Hall")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker5 = map.addMarker(new MarkerOptions()
+                .position(coordinates5)
                 .title("Area 5")
-                .snippet("University Hall - Yusof Ishak House - Central Library - Ridge View Residence"));
-        Marker marker6 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.29447414, 103.77131939))
+                .snippet("University Hall - Yusof Ishak House - Central Library - Ridge View Residence")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker6 = map.addMarker(new MarkerOptions()
+                .position(coordinates6)
                 .title("Area 6")
-                .snippet("Faculty of Arts & Social Sciences - School of Computing - Temasek Hall - Eusoff Hall"));
-        Marker marker7 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.29272578, 103.77487063))
+                .snippet("Faculty of Arts & Social Sciences - School of Computing - Temasek Hall - Eusoff Hall")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker7 = map.addMarker(new MarkerOptions()
+                .position(coordinates7)
                 .title("Area 7")
-                .snippet("NUS Business School - Heng Mui Keng Terrace"));
-        Marker marker8 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.2938413, 103.77846479))
+                .snippet("NUS Business School - Heng Mui Keng Terrace")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker8 = map.addMarker(new MarkerOptions()
+                .position(coordinates8)
                 .title("Area 8")
-                .snippet("NUS Enterprise Incubator"));
-        Marker marker9 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.29167462, 103.78122211))
+                .snippet("NUS Enterprise Incubator")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker9 = map.addMarker(new MarkerOptions()
+                .position(coordinates9)
                 .title("Area 9")
-                .snippet("Prince George's Park Residence - King Edward VII Hall - "));
-        Marker marker10 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.29445268, 103.78314257))
+                .snippet("Prince George's Park Residence - King Edward VII Hall - ")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker10 = map.addMarker(new MarkerOptions()
+                .position(coordinates10)
                 .title("Area 10")
-                .snippet("NUH"));
-        Marker marker11 = map.addMarker(new MarkerOptions()
-                .position(new LatLng(1.30603684, 103.7729609))
+                .snippet("NUH")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+        marker11 = map.addMarker(new MarkerOptions()
+                .position(coordinates11)
                 .title("Area 11")
-                .snippet("UTown"));
+                .snippet("UTown")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+
+
     }
 
     @Override
@@ -295,4 +313,33 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback 
         }
     }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        if (marker.equals(marker1)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 12));
+        } else if (marker.equals(marker2)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates2, 12));
+        } else if (marker.equals(marker3)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates3, 12));
+        } else if (marker.equals(marker4)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates4, 12));
+        } else if (marker.equals(marker5)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates5, 12));
+        } else if (marker.equals(marker6)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates6, 12));
+        } else if (marker.equals(marker7)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates7, 12));
+        } else if (marker.equals(marker8)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates8, 12));
+        } else if (marker.equals(marker9)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates9, 12));
+        } else if (marker.equals(marker10)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates10, 12));
+        } else if (marker.equals(marker11)) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates11, 12));
+        }
+
+        return false;
+    }
 }
