@@ -8,10 +8,13 @@ import java.util.List;
 /**
  * Stores all the locations to be found in the directory. Feel free to add in any locations or new categories you may want!
  */
+@Deprecated
 public class DirectoryDatabase {
 
 
     public static List<Pair> getInfo() {
+        MarkersDatabaseTable db = new MarkersDatabaseTable(null);
+        db.queryByTag("Admin");
         List<Pair> data = new ArrayList<Pair>();
 
         List<PlaceOfInterestInfo> admin = new ArrayList<PlaceOfInterestInfo>();
@@ -31,7 +34,8 @@ public class DirectoryDatabase {
         List<PlaceOfInterestInfo> restaurant = new ArrayList<PlaceOfInterestInfo>();
         List<PlaceOfInterestInfo> school = new ArrayList<PlaceOfInterestInfo>();
 
-        admin.add(MainScreen.POIListByArea.get(6).get("Association of Pacific Rim Universities"));
+
+     /*   admin.add(MainScreen.POIListByArea.get(6).get("Association of Pacific Rim Universities"));
         admin.add(MainScreen.POIListByArea.get(11).get("Colege of Alice and Peter Tan Office"));
         admin.add(MainScreen.POIListByArea.get(4).get("Computer Centre"));
         admin.add(MainScreen.POIListByArea.get(6).get("Development Office"));
@@ -320,7 +324,7 @@ public class DirectoryDatabase {
         school.add(MainScreen.POIListByArea.get(11).get("Yale-NUS College"));
         school.add(MainScreen.POIListByArea.get(3).get("Yong Siew Toh Conservatory of Music"));
 
-
+*/
 
 
         data.add(new Pair("Administrative", admin));

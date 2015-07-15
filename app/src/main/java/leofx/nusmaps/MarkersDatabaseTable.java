@@ -27,29 +27,31 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
 
     }
 
-    public Cursor getEmployees() {
-
-        SQLiteDatabase db = getReadableDatabase();
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-
-        String [] sqlSelect = {"0 _id", "FirstName", "LastName"};
-        String sqlTables = "Employees";
-
-        qb.setTables(sqlTables);
-        Cursor c = qb.query(db, sqlSelect, null, null,
-                null, null, null);
-
-        c.moveToFirst();
-        return c;
-
-    }
 
     public Cursor doQuery(String query) {
         SQLiteDatabase db = getReadableDatabase();
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        qb.setTables("Markers");
-        Cursor c = db.rawQuery("SELECT Name as _id FROM Markers WHERE _id LIKE '%" + query + "%';", null);
+        Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name LIKE '%" + query + "%' ORDER BY Name ASC;", null);
        // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
         return c;
+    }
+
+    public Cursor queryByTag(String query) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Tag='" + query + "' ORDER BY Name ASC;", null);
+        // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
+        return c;
+    }
+
+    public Cursor queryForBusStops(String[] query) {
+        SQLiteDatabase db = getReadableDatabase();
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("SELECT * FROM Markers WHERE Name IN (");
+        for (int i = 0; i < query.length - 1; i++) {
+            queryBuilder.append("'" + query[i] + "',");
+
+        }
+
+        queryBuilder.append("'" + query[query.length - 1] + "');");
+        return db.rawQuery(queryBuilder.toString(), null);
     }
 }

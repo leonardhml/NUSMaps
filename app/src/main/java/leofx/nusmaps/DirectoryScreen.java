@@ -1,6 +1,7 @@
 package leofx.nusmaps;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +27,7 @@ public class DirectoryScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_directory_screen);
         dirList = (ExpandableListView) findViewById(R.id.dir_list);
-        parentDir = DirectoryDatabase.getInfo();
+        parentDir = getInfo();
         adapter = new DirectoryAdapter(this, parentDir);
         dirList.setAdapter(adapter);
 
@@ -49,6 +50,7 @@ public class DirectoryScreen extends ActionBarActivity {
             }
         });
     }
+
 
 
 
@@ -75,6 +77,40 @@ public class DirectoryScreen extends ActionBarActivity {
     }
 
 
+    public List<Pair> getInfo() {
+        MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+        final String[] GROUP_NAMES = {"Administrative", "Bus Stops", "Cafes", "Canteens", "Cultural Facilities", "Fast Food", "Food Court", "General Stores", "Kiosks", "Lecture Theatres / Auditoriums",
+                "Libraries", "Recreational Facilities", "Research Facilities", "Residences/Halls", "Restaurants", "Schools/Faculties"};
+        final String[] GROUP_TAGS = {"Admin", "Busstop", "Cafe", "Canteen", "Cultural", "Fast Food", "Food Court", "General Stores", "Kiosk", "Lecture Theatre",
+                "Library", "Recreation", "Research", "Residence", "Restaurant", "School"};
 
+        List<Pair> data = new ArrayList<Pair>();
+
+        for (int i = 0; i < GROUP_NAMES.length; i++) {
+            Cursor c = db.queryByTag(GROUP_TAGS[i]);
+            data.add(new Pair(GROUP_NAMES[i], getPOIFromCursor(c)));
+        }
+
+        return data;
+    }
+
+    private List<PlaceOfInterestInfo> getPOIFromCursor(Cursor c) {
+        List<PlaceOfInterestInfo> lst = new ArrayList<PlaceOfInterestInfo>();
+        c.moveToFirst();
+        while(!c.isAfterLast()) {
+            String name = c.getString(c.getColumnIndex("Name"));
+            String coordinates = c.getString(c.getColumnIndex("Coordinates"));
+            String[] latLngStrings = coordinates.split(",");
+            Double lat = Double.parseDouble(latLngStrings[0].trim());
+            Double lng = Double.parseDouble(latLngStrings[1].trim());
+            LatLng latLng = new LatLng(lat, lng);
+            String tag = c.getString(c.getColumnIndex("Tag"));
+            String info = c.getString(c.getColumnIndex("Info"));
+            lst.add(new PlaceOfInterestInfo(name, latLng, tag, info));
+            c.moveToNext();
+        }
+
+        return lst;
+    }
 
 }
