@@ -72,8 +72,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     private LatLng coordinates11 = new LatLng(1.30603684, 103.7729609);
     GoogleMap map;
 
-  //  protected static List<Map<String, PlaceOfInterestInfo>> POIListByArea;
-
     // For bus directory uses
     private List<PolylineOptions> latLngList = null;
 //    private List<List<PlaceOfInterestInfo>> busMarkerList = null;
@@ -89,7 +87,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         navigationItems = getResources().getStringArray(R.array.navigation_items);
         mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-   //     POIListByArea = initialisePOIList();
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navigationItems));
 
@@ -117,6 +114,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
 
     }
 
+ /*   @Deprecated
     private List<Map<String, PlaceOfInterestInfo>> initialisePOIList() {
         // Initialise all the PoIs in all areas, arranged by area; e.g. if you want to retrieve a PoI from area 5, use POIListByArea.get(5).get("POI name")
         List<Map<String, PlaceOfInterestInfo>> POIListByArea = new ArrayList<Map<String, PlaceOfInterestInfo>>();
@@ -134,7 +132,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         POIListByArea.add(MarkersDatabase.Area11.getArea11POIs());
 
         return POIListByArea;
-    }
+    } */
 
 
     @Override
@@ -309,7 +307,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                 map.clear();
                 int position = data.getIntExtra("leofx.nusmaps.position", 0);
                 if (latLngList == null) { latLngList = BusDirectoryDatabase.getLatLngList(); }
-        //        if (busMarkerList == null) { busMarkerList = BusDirectoryDatabase.getBusMarkersList(); }
                 Polyline line = map.addPolyline(latLngList.get(position).color(BusDirectoryDatabase.COLORS[position]));
 
                 addMarkersForBusRoute(position);

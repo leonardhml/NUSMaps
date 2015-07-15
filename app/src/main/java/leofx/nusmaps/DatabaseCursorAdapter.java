@@ -11,6 +11,8 @@ import android.widget.TextView;
 /**
  * Created by leona_000 on 13/7/2015.
  */
+
+@Deprecated
 public class DatabaseCursorAdapter extends CursorAdapter{
 
     public DatabaseCursorAdapter(Context context, Cursor cursor) {

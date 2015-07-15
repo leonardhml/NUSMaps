@@ -22,6 +22,8 @@ import java.io.InputStream;
 /**
  * Created by leona_000 on 13/7/2015.
  */
+
+@Deprecated
 public class DatabaseTable {
 
     public static final String COL_NAME = "NAME";
