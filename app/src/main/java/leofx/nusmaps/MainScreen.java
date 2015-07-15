@@ -328,7 +328,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     public boolean onMarkerClick(Marker marker) {
 
         if (marker.equals(marker1)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 19));
         } else if (marker.equals(marker2)) {
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates2, 12));
         } else if (marker.equals(marker3)) {
