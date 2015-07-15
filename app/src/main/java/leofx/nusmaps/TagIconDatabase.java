@@ -12,22 +12,22 @@ public class TagIconDatabase {
 
     public Map<String, String> getTagIconMatching() {
         Map<String, String> tagIconMap = new HashMap<String, String>();
-        tagIconMap.put("Admin","");
-        tagIconMap.put("Busstop","");
-        tagIconMap.put("Cafe","");
-        tagIconMap.put("Canteen","");
-        tagIconMap.put("Cultural","");
-        tagIconMap.put("Fast Food","");
-        tagIconMap.put("Food Court","");
-        tagIconMap.put("General Stores","");
-        tagIconMap.put("Kiosk","");
-        tagIconMap.put("Lecture Theatre","");
-        tagIconMap.put("Library","");
-        tagIconMap.put("Recreation","");
-        tagIconMap.put("Research","");
-        tagIconMap.put("Residence","");
-        tagIconMap.put("Restaurant","");
-        tagIconMap.put("School","");
+        tagIconMap.put("Admin","administration");
+        tagIconMap.put("Busstop","busstop");
+        tagIconMap.put("Cafe","restaurant_breakfast");
+        tagIconMap.put("Canteen","cafeteria");
+        tagIconMap.put("Cultural","shintoshrine");
+        tagIconMap.put("Fast Food","fastfood");
+        tagIconMap.put("Food Court","restaurant_korean");
+        tagIconMap.put("General Stores","supermarket");
+        tagIconMap.put("Kiosk","kiosk");
+        tagIconMap.put("Lecture Theatre","theatre");
+        tagIconMap.put("Library","library");
+        tagIconMap.put("Recreation","tennis");
+        tagIconMap.put("Research","museum_science");
+        tagIconMap.put("Residence","hostel_0star");
+        tagIconMap.put("Restaurant","restaurant");
+        tagIconMap.put("School","school");
 
         return tagIconMap;
     }

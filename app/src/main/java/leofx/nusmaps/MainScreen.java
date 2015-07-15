@@ -219,57 +219,57 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                 .position(coordinates1)
                 .title("Area 1")
                 .snippet("Faculty of Science - Faculty of Dentistry - Yong Loo Lin School of Medicine")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker2 = map.addMarker(new MarkerOptions()
                 .position(coordinates2)
                 .title("Area 2")
                 .snippet("Sports & Recreation Centre - University Health Centre - NUS Field")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker3 = map.addMarker(new MarkerOptions()
                 .position(coordinates3)
                 .title("Area 3")
                 .snippet("University Cultural Centre - Yong Siew Toh Conservatory of Music - Lee Kong Chian Natural History Museum")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker4 = map.addMarker(new MarkerOptions()
                 .position(coordinates4)
                 .title("Area 4")
                 .snippet("Faculty of Engineering - School of Design and Environment - Computer Centre - Raffles Hall")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker5 = map.addMarker(new MarkerOptions()
                 .position(coordinates5)
                 .title("Area 5")
                 .snippet("University Hall - Yusof Ishak House - Central Library - Ridge View Residence")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker6 = map.addMarker(new MarkerOptions()
                 .position(coordinates6)
                 .title("Area 6")
                 .snippet("Faculty of Arts & Social Sciences - School of Computing - Temasek Hall - Eusoff Hall")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker7 = map.addMarker(new MarkerOptions()
                 .position(coordinates7)
                 .title("Area 7")
                 .snippet("NUS Business School - Heng Mui Keng Terrace")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker8 = map.addMarker(new MarkerOptions()
                 .position(coordinates8)
                 .title("Area 8")
                 .snippet("NUS Enterprise Incubator")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker9 = map.addMarker(new MarkerOptions()
                 .position(coordinates9)
                 .title("Area 9")
                 .snippet("Prince George's Park Residence - King Edward VII Hall - ")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker10 = map.addMarker(new MarkerOptions()
                 .position(coordinates10)
                 .title("Area 10")
                 .snippet("NUH")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
         marker11 = map.addMarker(new MarkerOptions()
                 .position(coordinates11)
                 .title("Area 11")
                 .snippet("UTown")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_export)));
 
 
     }
@@ -338,7 +338,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     public boolean onMarkerClick(Marker marker) {
 
         if (marker.equals(marker1)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 19));
+            map.clear();
         } else if (marker.equals(marker2)) {
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates2, 12));
         } else if (marker.equals(marker3)) {
@@ -361,6 +361,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates11, 12));
         }
 
-        return false;
+        return true;
     }
 }
