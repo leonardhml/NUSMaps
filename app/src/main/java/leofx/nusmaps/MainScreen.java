@@ -60,12 +60,12 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     private Marker marker1, marker2, marker3, marker4, marker5,
             marker6, marker7, marker8, marker9, marker10, marker11;
     private LatLng coordinates1 = new LatLng(1.29619031, 103.78018141);
-    private LatLng coordinates2 = new LatLng(1.29947249, 103.7774992);
+    private LatLng coordinates2 = new LatLng(1.29965484, 103.77693594);
     private LatLng coordinates3 = new LatLng(1.30187513, 103.77277851);
     private LatLng coordinates4 = new LatLng(1.2990649, 103.77204895);
     private LatLng coordinates5 = new LatLng(1.29694114, 103.77531052);
-    private LatLng coordinates6 = new LatLng(1.29447414, 103.77131939);
-    private LatLng coordinates7 = new LatLng(1.29272578, 103.77487063);
+    private LatLng coordinates6 = new LatLng(1.29385202, 103.7716037);
+    private LatLng coordinates7 = new LatLng(1.29296176, 103.77562702);
     private LatLng coordinates8 = new LatLng(1.2938413, 103.77846479);
     private LatLng coordinates9 = new LatLng(1.29167462, 103.78122211);
     private LatLng coordinates10 = new LatLng(1.29445268, 103.78314257);
@@ -336,47 +336,47 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     public boolean onMarkerClick(Marker marker) {
 
         if (marker.equals(marker1)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 19));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker2)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates2, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates2, 16));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker3)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates3, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates3, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker4)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates4, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates4, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker5)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates5, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates5, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker6)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates6, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates6, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker7)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates7, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates7, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker8)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates8, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates8, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker9)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates9, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates9, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker10)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates10, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates10, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker11)) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates11, 12));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates11, 17));
             marker.showInfoWindow();
             return true;
         }
