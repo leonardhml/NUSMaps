@@ -54,4 +54,10 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
         queryBuilder.append("'" + query[query.length - 1] + "');");
         return db.rawQuery(queryBuilder.toString(), null);
     }
+
+    public Cursor queryForArea(int area) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Area = '" + area +"'", null);
+        return c;
+    }
 }

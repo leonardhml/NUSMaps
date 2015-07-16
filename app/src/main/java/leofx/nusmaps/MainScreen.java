@@ -70,6 +70,9 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     private LatLng coordinates9 = new LatLng(1.29167462, 103.78122211);
     private LatLng coordinates10 = new LatLng(1.29445268, 103.78314257);
     private LatLng coordinates11 = new LatLng(1.30603684, 103.7729609);
+
+
+
     GoogleMap map;
 
     // For bus directory uses
@@ -279,6 +282,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         String[] busStopsToAdd = BusDirectoryDatabase.allBusStops[pos];
         Cursor c = new MarkersDatabaseTable(this).queryForBusStops(busStopsToAdd);
 
+        addMarkersFromCursor(c);
+    }
+
+    private void addMarkersFromCursor(Cursor c) {
         c.moveToFirst();
         while(!c.isAfterLast()) {
             String name = c.getString(c.getColumnIndex("Name"));
@@ -298,46 +305,68 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     public boolean onMarkerClick(Marker marker) {
 
         if (marker.equals(marker1)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(1);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker2)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(2);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates2, 16));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker3)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(3);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates3, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker4)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(4);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates4, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker5)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(5);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates5, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker6)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(6);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates6, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker7)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(7);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates7, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker8)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(8);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates8, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker9)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(9);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates9, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker10)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(10);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates10, 17));
             marker.showInfoWindow();
             return true;
         } else if (marker.equals(marker11)) {
+            Cursor c = new MarkersDatabaseTable(this).queryForArea(11);
+            addMarkersFromCursor(c);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates11, 17));
             marker.showInfoWindow();
             return true;
