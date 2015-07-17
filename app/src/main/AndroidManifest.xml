@@ -48,17 +48,20 @@
         <activity
             android:name=".DirectoryScreen"
             android:theme="@style/AppTheme"
-            android:label="@string/title_activity_directory_screen" >
+            android:label="@string/title_activity_directory_screen"
+            android:parentActivityName=".MainScreen">
         </activity>
 
         <activity
             android:name=".BusDirectoryScreen"
-            android:label="@string/title_activity_bus_directory_screen" >
+            android:label="@string/title_activity_bus_directory_screen"
+            android:parentActivityName=".MainScreen">
         </activity>
         <activity
             android:name=".SearchActivity"
             android:theme="@style/AppTheme"
-            android:label="@string/title_activity_search">
+            android:label="@string/title_activity_search"
+            android:parentActivityName=".MainScreen">
 
             <intent-filter>
               <action android:name="android.intent.action.SEARCH" />

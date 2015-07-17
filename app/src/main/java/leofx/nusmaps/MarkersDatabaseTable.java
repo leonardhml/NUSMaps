@@ -13,7 +13,7 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
 
 
 
-    private static final String DATABASE_NAME = "markers.db";
+    private static final String DATABASE_NAME = "markers2.db";
     private static final int DATABASE_VERSION = 1;
 
     public MarkersDatabaseTable(Context context) {

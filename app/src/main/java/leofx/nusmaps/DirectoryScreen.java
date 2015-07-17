@@ -30,6 +30,7 @@ public class DirectoryScreen extends ActionBarActivity {
         parentDir = getInfo();
         adapter = new DirectoryAdapter(this, parentDir);
         dirList.setAdapter(adapter);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         dirList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
