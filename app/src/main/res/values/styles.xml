@@ -3,8 +3,22 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:editTextColor">#FFEF7C00</item>
+        <item name="android:textColorPrimary">#FFEF7C00</item>
+        <item name="android:textColorSecondary">#FFEF7C00</item>
+        <item name="android:textColorTertiary">#FFEF7C00</item>
+        <item name="android:textColorPrimaryInverse">#FFEF7C00</item>
+        <item name="android:textColorSecondaryInverse">#FFEF7C00</item>
+        <item name="android:textColorTertiaryInverse">#FFEF7C00</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="DirectoryScreen" parent="AppTheme">
+        <item name="android:textColor">#FFEF7C00</item>
+        <item name="android:background">#FF003D7C</item>
+        <item name="android:padding">0dp</item>
+
+    </style>
     <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
 
     </style>
