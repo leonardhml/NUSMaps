@@ -88,6 +88,9 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
+        MapFragment mapFrag = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapView));
+        mapFrag.getMapAsync(this);
+
         tagIconMap = TagIconDatabase.getTagIconMatching();
 
         navigationItems = getResources().getStringArray(R.array.navigation_items);
@@ -114,9 +117,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             }
         });
 
-
-        MapFragment mapFrag = ((MapFragment) getFragmentManager().findFragmentById(R.id.mapView));
-        mapFrag.getMapAsync(this);
 
     }
 
@@ -194,14 +194,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                 map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(map.getCameraPosition().target, map.getCameraPosition().zoom, map.getCameraPosition().tilt, 30)));
             }
         });
-    //    LatLngBounds overlayBound = new LatLngBounds(new LatLng(1.291581, 103.766413), new LatLng(1.309472, 103.788708));
-    //    GroundOverlayOptions nusOverlayOptions = new GroundOverlayOptions()
-    //            .image(BitmapDescriptorFactory.fromResource(R.drawable.icon3))
-    //            .positionFromBounds(overlayBound);
-
-    //    map.addGroundOverlay(nusOverlayOptions);
-
-
         map.setOnMarkerClickListener(this);
         constructPolygonsAndMarkers();
 
