@@ -17,8 +17,9 @@
         <item name="android:textColor">#FFEF7C00</item>
         <item name="android:background">#FF003D7C</item>
         <item name="android:padding">0dp</item>
-
     </style>
+
+
     <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
 
     </style>

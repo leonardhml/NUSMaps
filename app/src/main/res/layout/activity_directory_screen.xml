@@ -14,7 +14,6 @@
         android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
         android:divider="#FF003D7C"
         android:dividerHeight="0.5dp"
-        style="@style/DirectoryScreen"
-        ></ExpandableListView>
+        style="@style/DirectoryScreen" />
 
 </RelativeLayout>

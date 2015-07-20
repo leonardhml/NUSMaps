@@ -16,7 +16,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.Nusmap" >
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -55,6 +55,7 @@
         <activity
             android:name=".BusDirectoryScreen"
             android:label="@string/title_activity_bus_directory_screen"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".MainScreen">
         </activity>
         <activity
