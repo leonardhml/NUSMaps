@@ -111,6 +111,8 @@ public class DirectoryScreen extends ActionBarActivity {
             c.moveToNext();
         }
 
+        c.close();
+
         return lst;
     }
 
