@@ -19,7 +19,7 @@
 
 <resources>
 
-    <style name="Theme.Nusmap" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+    <style name="Theme.Nusmap" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarItemBackground">@drawable/selectable_background_nusmap</item>
         <item name="android:popupMenuStyle">@style/PopupMenu.Nusmap</item>
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Nusmap</item>
