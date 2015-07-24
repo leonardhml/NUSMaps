@@ -11,7 +11,7 @@
     
     <string-array name="navigation_items">
         <item name="directory">Directory</item>
-        <item name="search">Search</item>
+        <item name="home">Home</item>
         <item name="routes">Bus Routes</item>
         <item name="login">Login</item>
     </string-array>

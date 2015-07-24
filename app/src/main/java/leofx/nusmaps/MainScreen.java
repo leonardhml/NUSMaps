@@ -109,6 +109,15 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                         i = new Intent(MainScreen.this, DirectoryScreen.class);
                         startActivityForResult(i, 0);
                         break;
+                    case 1:
+                        map.clear();
+                        constructPolygonsAndMarkers();
+                        map.animateCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds(new LatLng(1.292395, 103.768174), new LatLng(1.307562, 103.785920)), 1));
+                        for (int j = 0; j < isAreaMarkerExpanded.length; j++) {
+                            isAreaMarkerExpanded[j] = false;
+                        }
+                        mDrawerlayout.closeDrawers();
+                        break;
                     case 2:
                         i = new Intent(MainScreen.this, BusDirectoryScreen.class);
                         startActivityForResult(i, 2);
@@ -192,7 +201,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             @Override
             public void onMapLoaded() {
                 map.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds(new LatLng(1.292395, 103.768174), new LatLng(1.307562, 103.785920)), 1));
-                map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(map.getCameraPosition().target, map.getCameraPosition().zoom, map.getCameraPosition().tilt, 30)));
+               // map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(map.getCameraPosition().target, map.getCameraPosition().zoom, map.getCameraPosition().tilt, 30)));
             }
         });
         map.setOnMarkerClickListener(this);
