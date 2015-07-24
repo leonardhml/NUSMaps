@@ -16,6 +16,8 @@ import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -50,6 +52,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.VisibleRegion;
 
 
 public class MainScreen extends ActionBarActivity implements OnMapReadyCallback, OnMarkerClickListener{
@@ -72,9 +75,15 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     private LatLng coordinates10 = new LatLng(1.29445268, 103.78314257);
     private LatLng coordinates11 = new LatLng(1.30603684, 103.7729609);
 
+    private final LatLngBounds BOUNDS = new LatLngBounds(new LatLng(1.289144, 103.764993), new LatLng(1.311097, 103.791564));
+    private final int MAX_ZOOM = 21;
+    private final int MIN_ZOOM = 16;
+
 
 
     GoogleMap map;
+
+    private OverscrollHandler mOverscrollHandler;
 
     // For bus directory uses
     private List<PolylineOptions> latLngList = null;
@@ -116,6 +125,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                         for (int j = 0; j < isAreaMarkerExpanded.length; j++) {
                             isAreaMarkerExpanded[j] = false;
                         }
+
                         mDrawerlayout.closeDrawers();
                         break;
                     case 2:
@@ -126,6 +136,9 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
 
             }
         });
+
+        mOverscrollHandler = new OverscrollHandler();
+        mOverscrollHandler.sendEmptyMessageDelayed(0,100);
 
 
     }
@@ -451,6 +464,53 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         }
 
         return m;
+    }
+
+    /**
+     * Returns the correction for Lat and Lng if camera is trying to get outside of visible map
+     * @param cameraBounds Current camera bounds
+     * @return Latitude and Longitude corrections to get back into bounds.
+     */
+    private LatLng getLatLngCorrection(LatLngBounds cameraBounds) {
+        double latitude=0, longitude=0;
+        if(cameraBounds.southwest.latitude < BOUNDS.southwest.latitude) {
+            latitude = BOUNDS.southwest.latitude - cameraBounds.southwest.latitude;
+        }
+        if(cameraBounds.southwest.longitude < BOUNDS.southwest.longitude) {
+            longitude = BOUNDS.southwest.longitude - cameraBounds.southwest.longitude;
+        }
+        if(cameraBounds.northeast.latitude > BOUNDS.northeast.latitude) {
+            latitude = BOUNDS.northeast.latitude - cameraBounds.northeast.latitude;
+        }
+        if(cameraBounds.northeast.longitude > BOUNDS.northeast.longitude) {
+            longitude = BOUNDS.northeast.longitude - cameraBounds.northeast.longitude;
+        }
+        return new LatLng(latitude, longitude);
+    }
+
+    /**
+     * Bounds the user to the overlay.
+     */
+    private class OverscrollHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            CameraPosition position = map.getCameraPosition();
+            VisibleRegion region = map.getProjection().getVisibleRegion();
+            float zoom = 0;
+            if(position.zoom < MIN_ZOOM) zoom = MIN_ZOOM;
+            if(position.zoom > MAX_ZOOM) zoom = MAX_ZOOM;
+            LatLng correction = getLatLngCorrection(region.latLngBounds);
+            if(zoom != 0 || correction.latitude != 0 || correction.longitude != 0) {
+                zoom = (zoom==0)?position.zoom:zoom;
+                double lat = position.target.latitude + correction.latitude;
+                double lon = position.target.longitude + correction.longitude;
+                CameraPosition newPosition = new CameraPosition(new LatLng(lat,lon), zoom, position.tilt, position.bearing);
+                CameraUpdate update = CameraUpdateFactory.newCameraPosition(newPosition);
+                map.moveCamera(update);
+            }
+        /* Recursively call handler every 100ms */
+            sendEmptyMessageDelayed(0,100);
+        }
     }
 
 
