@@ -30,7 +30,7 @@
         android:divider="#FF003D7C"
         android:dividerHeight="2dp"
         android:background="#FF003D7C"
-        />
+        android:textStyle="bold"/>
 
 </android.support.v4.widget.DrawerLayout>
 
