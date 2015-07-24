@@ -75,9 +75,12 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     private LatLng coordinates10 = new LatLng(1.29445268, 103.78314257);
     private LatLng coordinates11 = new LatLng(1.30603684, 103.7729609);
 
-    private final LatLngBounds BOUNDS = new LatLngBounds(new LatLng(1.289144, 103.764993), new LatLng(1.311097, 103.791564));
+  //  private final LatLngBounds BOUNDS = new LatLngBounds(new LatLng(1.289144, 103.764993), new LatLng(1.311097, 103.791564));
+  private final LatLng SWBOUNDS = new LatLng(1.266729, 103.742421);
+    private final LatLng NEBOUNDS = new LatLng(1.323040, 103.813505);
+    private final LatLngBounds BOUNDS = new LatLngBounds(SWBOUNDS, NEBOUNDS);
     private final int MAX_ZOOM = 21;
-    private final int MIN_ZOOM = 16;
+    private final int MIN_ZOOM = 1;
 
 
 
@@ -143,26 +146,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
 
     }
 
- /*   @Deprecated
-    private List<Map<String, PlaceOfInterestInfo>> initialisePOIList() {
-        // Initialise all the PoIs in all areas, arranged by area; e.g. if you want to retrieve a PoI from area 5, use POIListByArea.get(5).get("POI name")
-        List<Map<String, PlaceOfInterestInfo>> POIListByArea = new ArrayList<Map<String, PlaceOfInterestInfo>>();
-        POIListByArea.add(null);    //We don't have an area 0; so calling POIListByArea.get() we can just refer directly to the area we want
-        POIListByArea.add(MarkersDatabase.Area1.getArea1POIs());
-        POIListByArea.add(MarkersDatabase.Area2.getArea2POIs());
-        POIListByArea.add(MarkersDatabase.Area3.getArea3POIs());
-        POIListByArea.add(MarkersDatabase.Area4.getArea4POIs());
-        POIListByArea.add(MarkersDatabase.Area5.getArea5POIs());
-        POIListByArea.add(MarkersDatabase.Area6.getArea6POIs());
-        POIListByArea.add(MarkersDatabase.Area7.getArea7POIs());
-        POIListByArea.add(MarkersDatabase.Area8.getArea8POIs());
-        POIListByArea.add(MarkersDatabase.Area9.getArea9POIs());
-        POIListByArea.add(MarkersDatabase.Area10.getArea10POIs());
-        POIListByArea.add(MarkersDatabase.Area11.getArea11POIs());
-
-        return POIListByArea;
-    } */
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -209,6 +192,25 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        map.setMyLocationEnabled(true);
+        map.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+            @Override
+            public boolean onMyLocationButtonClick() {
+                LocationManager locationManager = (LocationManager)
+                        getSystemService(Context.LOCATION_SERVICE);
+                Criteria criteria = new Criteria();
+
+                Location location = locationManager.getLastKnownLocation(locationManager
+                        .getBestProvider(criteria, false));
+                double latitude = location.getLatitude();
+                double longitude = location.getLongitude();
+                if (latitude >= NEBOUNDS.latitude || latitude <= SWBOUNDS.latitude || longitude >= NEBOUNDS.longitude || longitude <= SWBOUNDS.longitude) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
 
         map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
@@ -236,29 +238,16 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         Polygon polygon11 = map.addPolygon(new PolygonCoordinatesDatabase.Area11().getPoly());
 
         marker1 = markerAdder(coordinates1, "Area 1", "Faculty of Science - Faculty of Dentistry - Yong Loo Lin School of Medicine", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker2 = markerAdder(coordinates2, "Area 2", "Sports & Recreation Centre - University Health Centre - NUS Field", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker3 = markerAdder(coordinates3, "Area 3", "University Cultural Centre - Yong Siew Toh Conservatory of Music - Lee Kong Chian Natural History Museum", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker4 = markerAdder(coordinates4, "Area 4", "Faculty of Engineering - School of Design and Environment - Computer Centre - Raffles Hall", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker5 = markerAdder(coordinates5, "Area 5", "University Hall - Yusof Ishak House - Central Library - Ridge View Residence", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker6 = markerAdder(coordinates6, "Area 6", "Faculty of Arts & Social Sciences - School of Computing - Temasek Hall - Eusoff Hall", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker7 = markerAdder(coordinates7, "Area 7", "NUS Business School - Heng Mui Keng Terrace", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker8 = markerAdder(coordinates8, "Area 8", "NUS Enterprise Incubator", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker9 = markerAdder(coordinates9, "Area 9", "Prince George's Park Residence - King Edward VII Hall", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker10 = markerAdder(coordinates10, "Area 10", "NUH", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
         marker11 = markerAdder(coordinates11, "Area 11", "UTown", false, BitmapDescriptorFactory.fromResource(R.drawable.pin_export));
-
-
-
     }
 
     @Override
@@ -328,6 +317,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                 isAreaMarkerExpanded[0] = true;
                 Cursor c = new MarkersDatabaseTable(this).queryForArea(1);
                 addMarkersFromCursor(c);
+                c.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 17));
             marker.showInfoWindow();
@@ -497,8 +487,8 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             CameraPosition position = map.getCameraPosition();
             VisibleRegion region = map.getProjection().getVisibleRegion();
             float zoom = 0;
-            if(position.zoom < MIN_ZOOM) zoom = MIN_ZOOM;
-            if(position.zoom > MAX_ZOOM) zoom = MAX_ZOOM;
+            //if(position.zoom < MIN_ZOOM) zoom = MIN_ZOOM;
+            //if(position.zoom > MAX_ZOOM) zoom = MAX_ZOOM;
             LatLng correction = getLatLngCorrection(region.latLngBounds);
             if(zoom != 0 || correction.latitude != 0 || correction.longitude != 0) {
                 zoom = (zoom==0)?position.zoom:zoom;

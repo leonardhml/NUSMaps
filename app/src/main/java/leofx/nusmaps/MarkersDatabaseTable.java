@@ -13,7 +13,7 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
 
 
 
-    private static final String DATABASE_NAME = "markers2.db";
+    private static final String DATABASE_NAME = "markers3.db";
     private static final int DATABASE_VERSION = 1;
 
     public MarkersDatabaseTable(Context context) {
@@ -52,7 +52,8 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
         }
 
         queryBuilder.append("'" + query[query.length - 1] + "');");
-        return db.rawQuery(queryBuilder.toString(), null);
+        Cursor c = db.rawQuery(queryBuilder.toString(), null);
+        return c;
     }
 
     public Cursor queryForArea(int area) {
