@@ -23,9 +23,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -33,7 +35,10 @@ import android.widget.Toast;
 import android.app.FragmentTransaction;
 import android.util.Log;
 
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -94,7 +99,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
 
     // For bus directory uses
     private List<PolylineOptions> latLngList = null;
-//    private List<List<PlaceOfInterestInfo>> busMarkerList = null;
 
 
     private Map<String, BitmapDescriptor> tagIconMap;
