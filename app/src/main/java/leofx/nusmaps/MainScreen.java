@@ -33,6 +33,7 @@ import android.widget.Toast;
 import android.app.FragmentTransaction;
 import android.util.Log;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -53,6 +54,9 @@ import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.VisibleRegion;
+
+
+import com.facebook.FacebookSdk;
 
 
 public class MainScreen extends ActionBarActivity implements OnMapReadyCallback, OnMarkerClickListener{
@@ -222,6 +226,22 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         map.setOnMarkerClickListener(this);
         constructPolygonsAndMarkers();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
     }
 
     private void constructPolygonsAndMarkers() {
