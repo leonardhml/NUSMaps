@@ -16,6 +16,8 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
     private static final String DATABASE_NAME = "markers3.db";
     private static final int DATABASE_VERSION = 1;
 
+    private SQLiteDatabase db;
+
     public MarkersDatabaseTable(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
@@ -29,21 +31,28 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
 
 
     public Cursor doQuery(String query) {
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name LIKE '%" + query + "%' ORDER BY Name ASC;", null);
-       // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
+        // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
+        return c;
+    }
+
+    public Cursor queryForName(String query) {
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name='" + query + "' ORDER BY Name ASC;", null);
+        // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
         return c;
     }
 
     public Cursor queryByTag(String query) {
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Tag='" + query + "' ORDER BY Name ASC;", null);
         // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
         return c;
     }
 
     public Cursor queryForBusStops(String[] query) {
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("SELECT * FROM Markers WHERE Name IN (");
         for (int i = 0; i < query.length - 1; i++) {
@@ -57,8 +66,12 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
     }
 
     public Cursor queryForArea(int area) {
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Area = '" + area +"'", null);
         return c;
+    }
+
+    public void close() {
+        db.close();
     }
 }

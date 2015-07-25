@@ -92,6 +92,7 @@ public class DirectoryScreen extends ActionBarActivity {
             data.add(new Pair(GROUP_NAMES[i], getPOIFromCursor(c)));
         }
 
+        db.close();
         return data;
     }
 
