@@ -1,14 +1,20 @@
 package leofx.nusmaps;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.hardware.camera2.params.Face;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -25,146 +31,86 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 public class FacebookLogin extends ActionBarActivity {
 
-    LoginButton loginButton;
-    CallbackManager callbackManager;
+    private CallbackManager callbackManager;
+    private LoginButton fbLoginButton;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>(){
+
+
+        //You need this method to be used only once to configure
+        //your key hash in your App Console at
+        // developers.facebook.com/apps
+
+        getFbKeyHash("leofx.nusmaps");
+
+        setContentView(R.layout.activity_facebook_login);
+        fbLoginButton = (LoginButton)findViewById(R.id.login_button);
+
+        fbLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                // App code
-                System.out.println("Success");
-                GraphRequest.newMeRequest(
-                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject json, GraphResponse response) {
-                                if (response.getError() != null) {
-                                    // handle error
-                                    System.out.println("ERROR");
-                                } else {
-                                    System.out.println("Success");
-                                    try {
 
-                                        String jsonresult = String.valueOf(json);
-                                        System.out.println("JSON Result" + jsonresult);
-
-                                        String str_email = json.getString("email");
-                                        String str_id = json.getString("id");
-                                        String str_firstname = json.getString("first_name");
-                                        String str_lastname = json.getString("last_name");
-
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }
-
-                        }).executeAsync();
-
+                System.out.println("Facebook Login Successful!");
+                System.out.println("Logged in user Details : ");
+                System.out.println("--------------------------");
+                System.out.println("User ID  : " + loginResult.getAccessToken().getUserId());
+                System.out.println("Authentication Token : " + loginResult.getAccessToken().getToken());
+                Toast.makeText(FacebookLogin.this, "Login Successful!", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onCancel() {
-                // App code
-            }
+                Toast.makeText(FacebookLogin.this, "Login cancelled by user!", Toast.LENGTH_LONG).show();
+                System.out.println("Facebook Login failed!!");
 
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-            }
-        });
-
-        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                //Log.v(TAG, "fblogin onSuccess");
-            }
-
-            @Override
-            public void onCancel() {
-               // Log.v(TAG, "fblogin onCancel");
             }
 
             @Override
             public void onError(FacebookException e) {
-               // Log.v(TAG, "fblogin onError");
+                Toast.makeText(FacebookLogin.this, "Login unsuccessful!", Toast.LENGTH_LONG).show();
+                System.out.println("Facebook Login failed!!");
             }
         });
     }
 
 
-    public View onCreateView(
-            LayoutInflater inflater,
-            ViewGroup container,
-            Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_facebook_login, container, false);
 
-        loginButton = (LoginButton) view.findViewById(R.id.login_button);
-        loginButton.setReadPermissions("user_friends");
 
-        // Other app specific specialization
+    public void getFbKeyHash(String packageName) {
 
-        // Callback registration
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-               // Log.v(TAG, "fblogin onSuccess");
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    packageName,
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("YourKeyHash :", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                System.out.println("YourKeyHash: "+ Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
+        } catch (PackageManager.NameNotFoundException e) {
 
-            @Override
-            public void onCancel() {
-                // App code
-               // Log.v(TAG, "fblogin onCancel");
-            }
+        } catch (NoSuchAlgorithmException e) {
 
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-               // Log.v(TAG, "fblogin onError");
-            }
-        });
-
-        return view;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_facebook_login, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int reqCode, int resCode, Intent i) {
+        callbackManager.onActivityResult(reqCode, resCode, i);
+    }
 
 }

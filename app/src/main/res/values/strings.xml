@@ -16,11 +16,11 @@
         <item name="login">Login</item>
     </string-array>
 
-
-    <string name="title_activity_directory_screen">DirectoryScreen</string>
-    <string name="title_activity_bus_directory_screen">BusDirectoryScreen</string>
-    <string name="title_activity_facebook_login">FacebookLogin</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_info_screen">InfoScreen</string>
+    <string name="facebook_app_id">412369732280266</string>
+    <string name="title_activity_directory_screen">Directory Screen</string>
+    <string name="title_activity_bus_directory_screen">Bus Directory Screen</string>
+    <string name="title_activity_facebook_login">Facebook Login</string>
+    <string name="title_activity_search">Search Activity</string>
+    <string name="title_activity_info_screen">Info Screen</string>
 
 </resources>

@@ -29,7 +29,8 @@ android {
 }
 
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral() }
 
 /* dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -58,5 +59,5 @@ dependencies {
     //       to be installed via the SDK manager.
     //   compile files('libs/poi-3.12-20150511.jar')
     compile files('libs/jxl.jar')
-    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.1.0'
 }
