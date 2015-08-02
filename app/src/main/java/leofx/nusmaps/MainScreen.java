@@ -143,6 +143,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                         i = new Intent(MainScreen.this, BusDirectoryScreen.class);
                         startActivityForResult(i, 2);
                         break;
+                    case 3:
+                        i = new Intent(MainScreen.this, FacebookLogin.class);
+                        startActivity(i);
+                        break;
                 }
 
             }

@@ -11,8 +11,8 @@
     <ListView
         android:id="@+id/bus_list"
         android:indicatorLeft="?android:attr/listPreferredItemPaddingLeft"
-        android:divider="#FF003D7C"
-        android:dividerHeight="0.5dp"
+        android:divider="#FFFFFFFF"
+        android:dividerHeight="3dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 
