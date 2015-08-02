@@ -16,7 +16,7 @@ import com.facebook.login.widget.LoginButton;
 
 
 public class FacebookLogin extends ActionBarActivity {
-
+/*
     LoginButton loginButton;
     CallbackManager callbackManager;
 
@@ -80,5 +80,5 @@ public class FacebookLogin extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

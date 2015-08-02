@@ -152,12 +152,6 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         mOverscrollHandler.sendEmptyMessageDelayed(0,100);
 
 
-        Intent i = getIntent();
-
-        if (i != null && i.getAction() != null && i.getAction().equals("showMap")) {
-            System.out.println(true);
-        }
-
 
     }
 
@@ -247,6 +241,21 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             }
         });
 
+
+        Intent i = getIntent();
+
+        if (i != null && i.getAction() != null && i.getAction().equals("showMap")) {
+            map.clear();
+            String name = i.getStringExtra("leofx.nusmaps.marker");
+            MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+            Cursor c = db.queryForName(name);
+            c.moveToFirst();
+
+            addMarkersFromCursor(c);
+            db.close();
+        }
+
+
     }
 
     @Override
@@ -254,7 +263,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         super.onResume();
 
         // Logs 'install' and 'app activate' App Events.
-        AppEventsLogger.activateApp(this);
+    //    AppEventsLogger.activateApp(this);
     }
 
     @Override
@@ -262,7 +271,7 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         super.onPause();
 
         // Logs 'app deactivate' App Event.
-        AppEventsLogger.deactivateApp(this);
+    //    AppEventsLogger.deactivateApp(this);
     }
 
     private void constructPolygonsAndMarkers() {

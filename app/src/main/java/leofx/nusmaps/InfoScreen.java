@@ -19,10 +19,11 @@ import java.util.Map;
 public class InfoScreen extends ActionBarActivity {
 
     ListView infoList;
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent i = getIntent();
-        String name = i.getStringExtra("leofx.nusmaps.marker");
+        name = i.getStringExtra("leofx.nusmaps.marker");
 
         MarkersDatabaseTable db = new MarkersDatabaseTable(this);
         Cursor c = db.queryForName(name);
@@ -113,6 +114,7 @@ public class InfoScreen extends ActionBarActivity {
 
         Intent i = new Intent(InfoScreen.this, MainScreen.class);
         i.setAction("showMap");
+        i.putExtra("leofx.nusmaps.marker", name);
         startActivity(i);
         finish();
 
