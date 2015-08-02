@@ -21,5 +21,6 @@
     <string name="title_activity_bus_directory_screen">BusDirectoryScreen</string>
     <string name="title_activity_facebook_login">FacebookLogin</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_info_screen">InfoScreen</string>
 
 </resources>

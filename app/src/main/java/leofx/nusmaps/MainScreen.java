@@ -156,6 +156,13 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         mOverscrollHandler.sendEmptyMessageDelayed(0,100);
 
 
+        Intent i = getIntent();
+
+        if (i != null && i.getAction() != null && i.getAction().equals("showMap")) {
+            System.out.println(true);
+        }
+
+
     }
 
 
@@ -228,11 +235,21 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             @Override
             public void onMapLoaded() {
                 map.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds(new LatLng(1.292395, 103.768174), new LatLng(1.307562, 103.785920)), 1));
-               // map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(map.getCameraPosition().target, map.getCameraPosition().zoom, map.getCameraPosition().tilt, 30)));
+                // map.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(map.getCameraPosition().target, map.getCameraPosition().zoom, map.getCameraPosition().tilt, 30)));
             }
         });
         map.setOnMarkerClickListener(this);
         constructPolygonsAndMarkers();
+
+        map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                Intent i = new Intent(MainScreen.this,InfoScreen.class);
+                i.putExtra("leofx.nusmaps.marker", marker.getTitle());
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -312,9 +329,12 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
 
     private void addMarkersForBusRoute(int pos) {
         String[] busStopsToAdd = BusDirectoryDatabase.allBusStops[pos];
-        Cursor c = new MarkersDatabaseTable(this).queryForBusStops(busStopsToAdd);
+        MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+        Cursor c = db.queryForBusStops(busStopsToAdd);
 
         addMarkersFromCursor(c);
+
+        db.close();
 
 
     }
@@ -343,9 +363,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         if (marker.equals(marker1)) {
             if (!isAreaMarkerExpanded[0]) {
                 isAreaMarkerExpanded[0] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(1);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(1);
                 addMarkersFromCursor(c);
-                c.close();
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates1, 17));
             marker.showInfoWindow();
@@ -353,8 +374,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker2)) {
             if (!isAreaMarkerExpanded[1]) {
                 isAreaMarkerExpanded[1] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(2);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(2);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates2, 16));
             marker.showInfoWindow();
@@ -362,8 +385,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker3)) {
             if (!isAreaMarkerExpanded[2]) {
                 isAreaMarkerExpanded[2] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(3);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(3);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates3, 17));
             marker.showInfoWindow();
@@ -371,8 +396,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker4)) {
             if (!isAreaMarkerExpanded[3]) {
                 isAreaMarkerExpanded[3] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(4);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(4);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates4, 17));
             marker.showInfoWindow();
@@ -380,8 +407,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker5)) {
             if (!isAreaMarkerExpanded[4]) {
                 isAreaMarkerExpanded[4] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(5);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(5);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates5, 17));
             marker.showInfoWindow();
@@ -389,8 +418,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker6)) {
             if (!isAreaMarkerExpanded[5]) {
                 isAreaMarkerExpanded[5] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(6);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(6);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates6, 17));
             marker.showInfoWindow();
@@ -398,8 +429,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker7)) {
             if (!isAreaMarkerExpanded[6]) {
                 isAreaMarkerExpanded[6] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(7);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(7);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates7, 17));
             marker.showInfoWindow();
@@ -407,8 +440,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker8)) {
             if (!isAreaMarkerExpanded[7]) {
                 isAreaMarkerExpanded[7] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(8);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(8);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates8, 17));
             marker.showInfoWindow();
@@ -416,8 +451,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker9)) {
             if (!isAreaMarkerExpanded[8]) {
                 isAreaMarkerExpanded[8] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(9);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(9);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates9, 17));
             marker.showInfoWindow();
@@ -425,8 +462,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker10)) {
             if (!isAreaMarkerExpanded[9]) {
                 isAreaMarkerExpanded[9] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(10);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(10);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates10, 17));
             marker.showInfoWindow();
@@ -434,8 +473,10 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
         } else if (marker.equals(marker11)) {
             if (!isAreaMarkerExpanded[10]) {
                 isAreaMarkerExpanded[10] = true;
-                Cursor c = new MarkersDatabaseTable(this).queryForArea(11);
+                MarkersDatabaseTable db = new MarkersDatabaseTable(this);
+                Cursor c = db.queryForArea(11);
                 addMarkersFromCursor(c);
+                db.close();
             }
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates11, 17));
             marker.showInfoWindow();
@@ -530,6 +571,8 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             sendEmptyMessageDelayed(0,100);
         }
     }
+
+
 
 
 }
