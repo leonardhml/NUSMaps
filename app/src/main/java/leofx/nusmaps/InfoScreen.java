@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,8 +41,8 @@ public class InfoScreen extends ActionBarActivity {
         infoList.setAdapter(new SimpleAdapter(this,
                 list,
                 R.layout.info_list_row,
-                new String[] {"category", "value"},
-                new int[] {R.id.text1, R.id.text2}));
+                new String[]{"category", "value"},
+                new int[]{R.id.text1, R.id.text2}));
 
     }
 
@@ -106,8 +107,24 @@ public class InfoScreen extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addFavourites() {
+    public void addFavourites(View v) {
 
+        TinyDB tDB = new TinyDB(getBaseContext());
+        ArrayList<String> fav = tDB.getListString("favourites");
+        if (fav == null || fav.isEmpty()) {
+            fav = new ArrayList<String>();
+        }
+        fav.add(name);
+
+        tDB.clear();
+        tDB.putListString("favourites", fav);
+        Toast.makeText(this, "Added", Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     public void showMap(View v){

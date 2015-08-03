@@ -10,6 +10,9 @@
         android:layout_height="fill_parent"
         android:gravity="center"
         android:layout_weight="1"
+        android:textColor="#FFEF7C00"
+        android:textStyle="bold"
+        android:background="?android:attr/activatedBackgroundIndicator"
         android:layout_margin="8dp"/>
 
     <TextView android:id="@+id/text2"
@@ -17,5 +20,8 @@
         android:layout_height="fill_parent"
         android:gravity="center"
         android:layout_weight="0.5"
+        android:textColor="#FFEF7C00"
+        android:textStyle="bold"
+        android:background="?android:attr/activatedBackgroundIndicator"
         android:layout_margin="8dp"/>
 </LinearLayout>

@@ -13,7 +13,7 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
 
 
 
-    private static final String DATABASE_NAME = "markers3.db";
+    private static final String DATABASE_NAME = "markers4.db";
     private static final int DATABASE_VERSION = 1;
 
     private SQLiteDatabase db;
@@ -32,13 +32,20 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
 
     public Cursor doQuery(String query) {
         db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name LIKE '%" + query + "%' ORDER BY Name ASC;", null);
+
+        String q = query.replace("'", "''");
+        Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name LIKE '%" + q + "%' ORDER BY Name ASC;", null);
+
+
+     //   Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name LIKE '%?%' ORDER BY Name ASC;", new String[]{query});
         // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
         return c;
     }
 
     public Cursor queryForName(String query) {
         db = getReadableDatabase();
+
+        String q = query.replace("'", "''");
         Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Name='" + query + "' ORDER BY Name ASC;", null);
         // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
         return c;
@@ -46,6 +53,8 @@ public class MarkersDatabaseTable extends SQLiteAssetHelper{
 
     public Cursor queryByTag(String query) {
         db = getReadableDatabase();
+
+        String q = query.replace("'", "''");
         Cursor c = db.rawQuery("SELECT * FROM Markers WHERE Tag='" + query + "' ORDER BY Name ASC;", null);
         // Cursor c = qb.query(db, new String[]{"Name"}, "Name = '" + query + "'", new String[] {query+"*"}, null, null, null);
         return c;

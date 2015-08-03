@@ -14,13 +14,16 @@
         <item name="home">Home</item>
         <item name="routes">Bus Routes</item>
         <item name="login">Login</item>
+        <item name="favourites">Favourites</item>
     </string-array>
 
 
-    <string name="title_activity_directory_screen">DirectoryScreen</string>
-    <string name="title_activity_bus_directory_screen">BusDirectoryScreen</string>
-    <string name="title_activity_facebook_login">FacebookLogin</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_info_screen">InfoScreen</string>
-
+    <string name="title_activity_directory_screen">Directory</string>
+    <string name="title_activity_bus_directory_screen">Bus Directory</string>
+    <string name="title_activity_facebook_login">Facebook Login</string>
+    <string name="title_activity_search">Search</string>
+    <string name="title_activity_info_screen">Info</string>
+'
+    <string name="facebook_app_id">412369732280266</string>
+    <string name="title_activity_favourites_screen">Favourites</string>
 </resources>

@@ -143,6 +143,14 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
                         i = new Intent(MainScreen.this, BusDirectoryScreen.class);
                         startActivityForResult(i, 2);
                         break;
+                    case 3:
+                        i = new Intent(MainScreen.this, FacebookLogin.class);
+                        startActivity(i);
+                        break;
+                    case 4:
+                        i = new Intent(MainScreen.this, FavouritesScreen.class);
+                        startActivity(i);
+                        break;
                 }
 
             }
@@ -235,9 +243,12 @@ public class MainScreen extends ActionBarActivity implements OnMapReadyCallback,
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                Intent i = new Intent(MainScreen.this,InfoScreen.class);
-                i.putExtra("leofx.nusmaps.marker", marker.getTitle());
-                startActivity(i);
+                Intent i = new Intent(MainScreen.this, InfoScreen.class);
+                String markerTitle = marker.getTitle();
+                if (!markerTitle.startsWith("Area")) {
+                    i.putExtra("leofx.nusmaps.marker", markerTitle);
+                    startActivity(i);
+                }
             }
         });
 

@@ -27,8 +27,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
-        android:divider="#FF003D7C"
-        android:dividerHeight="2dp"
+        android:divider="#FFFFFFFF"
+        android:dividerHeight="3dp"
         android:background="#FF003D7C"
         android:textStyle="bold"/>
 
