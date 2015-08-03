@@ -114,12 +114,19 @@ public class InfoScreen extends ActionBarActivity {
         if (fav == null || fav.isEmpty()) {
             fav = new ArrayList<String>();
         }
-        fav.add(name);
 
-        tDB.clear();
-        tDB.putListString("favourites", fav);
-        Toast.makeText(this, "Added", Toast.LENGTH_LONG).show();
-        finish();
+        if (!fav.contains(name)) {
+            fav.add(name);
+
+            tDB.clear();
+            tDB.putListString("favourites", fav);
+            Toast.makeText(this, "Added", Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+
+            Toast.makeText(this, "Place has already been added", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     @Override

@@ -87,7 +87,7 @@
         <activity
             android:name=".FavouritesScreen"
             android:label="@string/title_activity_favourites_screen"
-            android:parentActivityName=".MainScreen">
+            android:parentActivityName=".MainScreen" > >
         </activity>
     </application>
 
