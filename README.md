@@ -16,6 +16,8 @@ Summary
 References Used
 
 
+
+
 Overview
 
 
@@ -25,8 +27,7 @@ Our project aims to create a comprehensive and user-friendly NUS map mobile appl
 
 The following is our slide from the Ignition Session:
 
-
-
+![slide](http://i.imgur.com/IYrDhY4.png)
 
 Click the following to watch our part during the Ignition Session:
 https://youtu.be/osQjStOAci0?t=2h38m7s
