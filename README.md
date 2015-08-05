@@ -51,10 +51,10 @@ An interactive map interface based on the Google Maps API, where different zones
 
 As a student looking for some relaxation within the campus, I want to have a quick view of the UTown area where I can find many different facilities such as cafeteria, gym and swimming pool.
 
-Go to the homepage which shows the interactive campus map.
-Click on the shaded region indicated as “UTown”.
-Places of interests such as restaurants and student facilities would be highlighted with small descriptive icons such as this: 
-Click on the icons for more information on that facility.
+1. Go to the homepage which shows the interactive campus map.
+2. Click on the shaded region indicated as “UTown”.
+3. Places of interests such as restaurants and student facilities would be highlighted with small descriptive icons such as this: 
+4. Click on the icons for more information on that facility.
 
 **Progress:**
 
@@ -68,12 +68,12 @@ Bus routes of the NUS ISB services can be traced out on the interactive map if t
 
 As a visitor to the school, I want to know which shuttle bus to take from kent ridge to Business School
 
-Go to the homepage.
-Click “Menu”
-Select “Bus Route Map”
-Select “Location and Destination”
-Key in the current location and intended destination, which are “Kent Ridge Bus Stop” and “NUS Business School” respectively.
-The fastest bus route would be highlighted on the map, which shows the bus service D2.
+1. Go to the homepage.
+2. Click “Menu”
+3. Select “Bus Route Map”
+4. Select “Location and Destination”
+5. Key in the current location and intended destination, which are “Kent Ridge Bus Stop” and “NUS Business School” respectively.
+6. The fastest bus route would be highlighted on the map, which shows the bus service D2.
 
 **Progress:**
 
@@ -88,12 +88,12 @@ Users of the app may find places of interest such as lecture theatres, eateries,
 
 I am a student who has an exam later, I want to find an air-conditioned and quiet place to study in school, so that I can do some last minute revision for my exam.
 
-Go to the homepage
-Click “Menu”
-Select “Places of Interests”
-Select category “Study Areas”
-Possible locations to study will be pinpoint on the interactive map.
-Tap the locations to know more about it.
+1. Go to the homepage
+2. Click “Menu”
+3. Select “Places of Interests”
+4. Select category “Study Areas”
+5. Possible locations to study will be pinpoint on the interactive map.
+6. Tap the locations to know more about it.
 
 **Progress:**
 
@@ -112,11 +112,11 @@ As per a suggestion from our milestone one evaluation, we would like to highligh
 
 I am a student who would like to travel from SoC COM 1 to FoE LT5 on foot on a rainy day to attend a lecture.
 
-Go to the homepage
-Click “Menu”
-Select “Sheltered Route Map”
-Tap on “Where am I” button to see current location pinned on the map (SoC COM 1).
-Follow the traced out route to go to the intended destination (FoE LT5).
+1. Go to the homepage
+2. Click “Menu”
+3. Select “Sheltered Route Map”
+4. Tap on “Where am I” button to see current location pinned on the map (SoC COM 1).
+5. Follow the traced out route to go to the intended destination (FoE LT5).
 
 **Progress:**
 
@@ -128,11 +128,10 @@ Given that the home screen of our app automatically shows the campus map with sh
 
 **User Story 5:**
 
-I am a user who feels that the shaded regions are obstructing my view of the whole map, hence I would like to clear them away for now.
+I am a user who would like to revisit the home screen with shaded regions once again.
 
-Go to the homepage
-Tap a colourful icon (will be designed) to rid the map of shaded regions.
-Tap the icon again to use the shaded region features of the map.
+1. Go to the homepage
+2. Click on the "Home" button on the left sidebar
 
 **Progress:**
 This feature has been fully implemented and is ready for acceptance testing.
@@ -144,10 +143,11 @@ We would like to implement a form of social media integration within our app. Th
 **User Story 6:**
 
 I am a user who strongly feels that the food at a certain food court within the school is extremely bad. I would like to warn other people about that place and get them to avoid eating there.
-Login via Facebook through the app
-Locate the food court in question through the search functionality or directory screen
-Rate the food court 1 star out of 5
-Leave a nasty comment on the area’s information screen
+
+1. Login via Facebook through the app
+2. Locate the food court in question through the search functionality or directory screen
+3. Rate the food court 1 star out of 5
+4. Leave a nasty comment on the area’s information screen
 
 **Progress:**
 
@@ -160,9 +160,9 @@ Users unfamiliar to the NUS KR campus may not know what some places are about. W
 **User Story 7:**
 I am a user who is curious as to what kind of food is served at Alcove@UCC.
 
-Locate Alcove@UCC on the map (via area markers, directory, or search)
-Click on the marker
-An information screen will be displayed with a short description as to what kind of restaurant Alcove@UCC is.
+1. Locate Alcove@UCC on the map (via area markers, directory, or search)
+2. Click on the marker
+3. An information screen will be displayed with a short description as to what kind of restaurant Alcove@UCC is.
 	
 **Progress:**
 Feature is fully implemented and ready for acceptance testing.
@@ -173,10 +173,10 @@ For users who find themselves constantly revisiting the same area on the map aga
 **User Story 7:**
 I am a user who constantly gets lost in SoC and cannot seem to find my way to LT19. I always have to rely on NUSMap to locate the lecture theatre for me, but constantly looking it up via search or directory is rather annoying.
 
-Look up LT19 via search or directory
-Click on the marker labelled LT19 on the map
-On the info screen, click the “Add to Favourites” button
-Whenever I need to access the area, I simply go to the Favourites screen and select LT19 from the list of favourite locations and the map will instantly show the location of LT19 on the map.
+1. Look up LT19 via search or directory
+2. Click on the marker labelled LT19 on the map
+3. On the info screen, click the “Add to Favourites” button
+4. Whenever I need to access the area, I simply go to the Favourites screen and select LT19 from the list of favourite locations and the map will instantly show the location of LT19 on the map.
 
 **Progress:**
 Feature has been fully implemented and is ready for acceptance testing.
