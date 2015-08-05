@@ -26,7 +26,10 @@ Click the following to watch our part during the Ignition Session:
 https://youtu.be/osQjStOAci0?t=2h38m7s
 
 Click the following to download our app:
-https://goo.gl/4pslOZ
+https://www.dropbox.com/s/k4gwtsnoxywx3f3/NUSMap.apk?dl=0
+
+Click the following to see our Milestone 2 video:
+https://www.youtube.com/watch?v=5mnBH4AApsM&feature=youtu.be
 
 
 ##Ideation
