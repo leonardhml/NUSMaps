@@ -1,4 +1,8 @@
 # NUSMaps
+
+
+![alt tag](https://github.com/leonardhml/NUSMaps/blob/master/app/src/main/res/drawable/nus_loading_screen_xhdpi.png)
+
 For Orbital 2015
 
 
