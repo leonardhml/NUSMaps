@@ -7,7 +7,7 @@ For Orbital 2015
 
 
 
-Project Title: NUS Interactive Campus Map
+**Project Title**: NUS Interactive Campus Map
 
 
 
