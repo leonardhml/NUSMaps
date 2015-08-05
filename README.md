@@ -56,8 +56,9 @@ As a student looking for some relaxation within the campus, I want to have a qui
 3. Places of interests such as restaurants and student facilities would be highlighted with small descriptive icons such as this: 
 4. Click on the icons for more information on that facility.
 
-**Progress:**
+![shaded area](http://i.imgur.com/uEDmdgX.png)
 
+**Progress:**
 Feature has been fully implemented and ready for acceptance testing. Unique icons have been added, with every point of interest possessing the icon that best describes its purpose e.g. restaurants will be marked with the above icon. Quality of life improvements to this feature have also been implemented, which includes a zoom in feature upon clicking on an area marker as well as an overlay of shaded regions dividing the NUS campus into several separate areas.
 
 ###Bus Route Map for Internal Shuttle Bus (ISB) Service
@@ -75,8 +76,9 @@ As a visitor to the school, I want to know which shuttle bus to take from kent r
 5. Key in the current location and intended destination, which are “Kent Ridge Bus Stop” and “NUS Business School” respectively.
 6. The fastest bus route would be highlighted on the map, which shows the bus service D2.
 
-**Progress:**
+![bus routes](http://i.imgur.com/w089p6B.png)
 
+**Progress:**
 All bus routes for all internal shuttle buses have been implemented in the app. Upon selecting a bus service from a menu, the route travelled by the bus, together with its associated bus stops, will be displayed on the map. 
 
 
@@ -95,10 +97,12 @@ I am a student who has an exam later, I want to find an air-conditioned and quie
 5. Possible locations to study will be pinpoint on the interactive map.
 6. Tap the locations to know more about it.
 
-**Progress:**
+![directory](http://i.imgur.com/k83N6c5.png)
 
+**Progress:**
 An SQLite database of all places of interest within the main Kent Ridge NUS campus have been implemented and is ready for acceptance testing. The database can be accessed by the user via either the directory screen or the search functionality located at the top of the main map screen. 
 
+![directory](http://i.imgur.com/zQ7q0mq.png)
 
 ##Additional Features for the Current Sprint
 	
@@ -119,7 +123,6 @@ I am a student who would like to travel from SoC COM 1 to FoE LT5 on foot on a r
 5. Follow the traced out route to go to the intended destination (FoE LT5).
 
 **Progress:**
-
 Due to time limitations, this feature will not be implemented in this current sprint.
 
 ###Control Button on Home Screen to Toggle between Map View and Shaded Region Views
@@ -132,6 +135,8 @@ I am a user who would like to revisit the home screen with shaded regions once a
 
 1. Go to the homepage
 2. Click on the "Home" button on the left sidebar
+
+![home](http://i.imgur.com/QNCekKK.png)
 
 **Progress:**
 This feature has been fully implemented and is ready for acceptance testing.
@@ -149,8 +154,9 @@ I am a user who strongly feels that the food at a certain food court within the 
 3. Rate the food court 1 star out of 5
 4. Leave a nasty comment on the area’s information screen
 
-**Progress:**
+![facebook](http://i.imgur.com/uclOwdD.png)
 
+**Progress:**
 Facebook login has been implemented and is ready for acceptance testing. However, the ability for users to rate, comment and share photos has yet to be implemented.
 
 ###Information Screen for all Places of Interest
@@ -163,20 +169,24 @@ I am a user who is curious as to what kind of food is served at Alcove@UCC.
 1. Locate Alcove@UCC on the map (via area markers, directory, or search)
 2. Click on the marker
 3. An information screen will be displayed with a short description as to what kind of restaurant Alcove@UCC is.
-	
+
+![info](http://i.imgur.com/UcMoCHp.png)
+
 **Progress:**
 Feature is fully implemented and ready for acceptance testing.
 
 ###Favourites Functionality
 For users who find themselves constantly revisiting the same area on the map again and again, we have implemented a favourites screen that lists all the locations saved by the user for easy access. Users can add as many locations into the list as they want, and can choose to clear the list of favourites at any time. Favourites are stored in the internal memory of the phone.
 
-**User Story 7:**
+**User Story 8:**
 I am a user who constantly gets lost in SoC and cannot seem to find my way to LT19. I always have to rely on NUSMap to locate the lecture theatre for me, but constantly looking it up via search or directory is rather annoying.
 
 1. Look up LT19 via search or directory
 2. Click on the marker labelled LT19 on the map
 3. On the info screen, click the “Add to Favourites” button
 4. Whenever I need to access the area, I simply go to the Favourites screen and select LT19 from the list of favourite locations and the map will instantly show the location of LT19 on the map.
+
+![favourites](http://i.imgur.com/mW0FQHp.png)
 
 **Progress:**
 Feature has been fully implemented and is ready for acceptance testing.
@@ -230,20 +240,20 @@ https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html#foreground.t
 Nice and “almost” free map icons:
 http://www.webiconset.com/map-icons/
 
-	NUS corporate colours:
-	http://www.nus.edu.sg/identity/colours.php
+NUS corporate colours:
+http://www.nus.edu.sg/identity/colours.php
 
-	Creating a map application:
-	http://glennsayers.com/android-mapping/
+Creating a map application:
+http://glennsayers.com/android-mapping/
 
-	Google Map API Tutorial:
-	https://developers.google.com/maps/documentation/android/intro
+Google Map API Tutorial:
+https://developers.google.com/maps/documentation/android/intro
 
-	CS193A: Android Web Development:
-	http://web.stanford.edu/class/cs193a/videos.shtml
+CS193A: Android Web Development:
+http://web.stanford.edu/class/cs193a/videos.shtml
 
-	YouTube Android Video Tutorials:
-	https://www.youtube.com/playlist?list=PLshdtb5UWjSqgZ1yaeyKMiLyY4x1egK3c
+YouTube Android Video Tutorials:
+https://www.youtube.com/playlist?list=PLshdtb5UWjSqgZ1yaeyKMiLyY4x1egK3c
 
 
 
